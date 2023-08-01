@@ -12,7 +12,9 @@ const Navbar = () => {
       <div className='flex justify-between'>
         <div>
           {/* the bg-secondary class is implemnted in tailwind.config.js and there we can create any desired colors with desired names */}
-          <button className='mr-10 px-4 bg-secondary'>انضمام</button>
+          <button className='mr-10 px-4 bg-secondary'>
+            <Link href='./join'>انضمام</Link>
+          </button>
         </div>
         <div className='flex gap-5'>
           <Link href="./about"> من نحن؟</Link>
