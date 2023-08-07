@@ -20,7 +20,8 @@ const Navbar = () => {
           <Link href="./about"> من نحن؟</Link>
           <Link href="./contact"> تواصل معنا</Link>
           <Link href="./blogs"> مجتمعنا</Link>
-          <Link href="./campaign"> الحملات</Link>
+          <Link href="./events"> الحملات</Link>
+          <Link href="./events/new"> حملة جديدة (للأدمن فقط)</Link>
           <Link href="./"> الرئيسية</Link>
         </div>
       </div>
