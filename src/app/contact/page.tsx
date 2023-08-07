@@ -18,7 +18,7 @@ const Contact = () => {
             <label htmlFor='message'>ماهي رسالتك</label>
             <textarea className=' text-right h-36  px-3 py-2   border border-solid bg-red-50 rounded-md' id='message' placeholder='...اكتب رسالتك هنا'></textarea>
            </div>
-           <button  className='bg-secondary w-24 place-self-end px-6  rounded-md ' type='submit'>ارسال</button>
+           <button  className='bg-secondary w-24 place-self-center px-6  rounded-md ' type='submit'>ارسال</button>
         </form>
     </div>
   )
