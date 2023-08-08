@@ -11,7 +11,8 @@ import {
     Input,
     Textarea,
     Checkbox,
-    Carousel
+    Carousel,
+    Radio
 } from "@material-tailwind/react";
 
 export {
@@ -25,5 +26,6 @@ export {
     Input,
     Textarea,
     Checkbox,
-    Carousel
+    Carousel,
+    Radio
 };
