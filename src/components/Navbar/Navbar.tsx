@@ -13,16 +13,16 @@ const Navbar = () => {
         <div>
           {/* the bg-secondary class is implemnted in tailwind.config.js and there we can create any desired colors with desired names */}
           <button className='mr-10 px-4 bg-secondary'>
-            <Link href='./join'>انضمام</Link>
+            <Link href='/join'>انضمام</Link>
           </button>
         </div>
         <div className='flex gap-5'>
-          <Link href="./about"> من نحن؟</Link>
-          <Link href="./contact"> تواصل معنا</Link>
-          <Link href="./blogs"> مجتمعنا</Link>
-          <Link href="./events"> الحملات</Link>
-          <Link href="./events/new"> حملة جديدة (للأدمن فقط)</Link>
-          <Link href="./"> الرئيسية</Link>
+          <Link href="/about"> من نحن؟</Link>
+          <Link href="/contact"> تواصل معنا</Link>
+          <Link href="/blogs"> مجتمعنا</Link>
+          <Link href="/events"> الحملات</Link>
+          <Link href="/events/new"> حملة جديدة (للأدمن فقط)</Link>
+          <Link href="/"> الرئيسية</Link>
         </div>
       </div>
     </div>
