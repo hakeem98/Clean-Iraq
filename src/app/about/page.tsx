@@ -58,9 +58,6 @@ export default function about({}: Props) {
 
       </div>
 
-      
-
-
     </div>
   )
 }
