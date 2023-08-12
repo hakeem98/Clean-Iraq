@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import { Stack, Flex, Button, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
 import { Typography } from '@material-tailwind/react'
 type Props = {}
 
