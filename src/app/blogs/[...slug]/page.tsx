@@ -1,5 +1,6 @@
 // pages/blog/[slug].js
 "use client";
+import { ProfileHeader } from "@/components/Profile/ProfileHeader";
 import {
   Card,
   CardHeader,
@@ -8,39 +9,74 @@ import {
   Typography,
   Avatar,
   Tooltip,
+  Carousel,
+  IconButton,
+  Input,
+  Dialog,
+  DialogFooter,
+  Button,
+  DialogBody,
+  DialogHeader,
 } from "@material-tailwind/react";
 import "boxicons";
+import { useState } from "react";
 
 export default function BlogPost({ post }: any) {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen((cur) => !cur);
   return (
     <div className="mx-1">
-      <Card className="max-w-[600px] overflow-hidden m-3 px-10 ">
+      <Card
+        className="max-w-[550px] max-h-[750px] overflow-hidden m-3 px-6 shadow-lg bg-gray-50 my-7"
+        onClick={handleOpen}
+        style={{
+          cursor: "pointer",
+        }}
+      >
         <CardHeader
           color="transparent"
           floated={false}
           shadow={false}
-          className="flex items-center gap-1 pt-0 pb-4"
+          className="flex items-center justify-between pt-0 pb-4 mx-0"
         >
-          <Avatar
-            size="lg"
-            variant="circular"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-            alt="tania andrew"
-          />
-          <div className="flex w-full flex-col gap-0.5">
-            <div className="flex items-center justify-between">
-              <Typography variant="h5" color="blue-gray">
-                أمير نشوان{" "}
-              </Typography>
-            </div>
-            <Typography color="blue-gray">اليوم</Typography>
-          </div>
+          <ProfileHeader />
         </CardHeader>
-        <CardBody className="py-1">
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-            className="w-full h-80 object-cover max-h-[300px]"
-          />
+        <CardBody
+          className="py-1 bg-gray-100 rounded-lg p-3 mx-4"
+          style={{
+            marginLeft: "0px",
+            marginRight: "0px",
+          }}
+        >
+          <Carousel
+            className="rounded-xl"
+            style={{ border: "4px solid #9DDBAD" }}
+            navigation={({ setActiveIndex, activeIndex, length }) => (
+              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                {new Array(length).fill("").map((_, i) => (
+                  <span
+                    key={i}
+                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                    }`}
+                    onClick={() => setActiveIndex(i)}
+                  />
+                ))}
+              </div>
+            )}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+              alt="image 1"
+              className="h-full w-full object-cover"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+              alt="image 1"
+              className="h-full w-full object-cover"
+            />
+          </Carousel>
           <br />
           <Typography>
             وريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل
@@ -51,15 +87,77 @@ export default function BlogPost({ post }: any) {
             تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة
           </Typography>
         </CardBody>
-        <CardFooter className="flex items-center gap-4 py-4 ">
-          <Typography>
-            <i className="bx bx-heart bx-sm"></i>
-          </Typography>
-          <Typography>
-            <i className="bx bx-comment bx-sm"></i>
-          </Typography>
+        <CardFooter className="flex-column items-center py-4 py-1 bg-gray-100 rounded-lg p-3 mx-0 my-3">
+          <IconButton variant="text" className="text-black">
+            <i className="bx bx-heart bx-sm" />
+          </IconButton>
+          <IconButton variant="text" className="text-black">
+            <i className="bx bx-comment bx-sm" />
+          </IconButton>
         </CardFooter>
       </Card>
+      <Dialog size="xl" open={open} handler={handleOpen}>
+        <DialogHeader className="justify-between">
+          <ProfileHeader />
+        </DialogHeader>
+        <DialogBody className="p-0 flex-row grid grid-cols-2 grid-rows-1 gap-0">
+          <div className="col-start-2 row-start-1 flex justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2">
+            {" "}
+            <Typography variant="h1" className="">
+              لا توجد تعليقات
+            </Typography>
+          </div>
+          <div className="col-start-1 row-start-1 mx-2">
+            <CardBody
+              className="py-1 bg-gray-100 rounded-lg p-3 mx-4"
+              style={{
+                marginLeft: "0px",
+                marginRight: "0px",
+              }}
+            >
+              <Carousel
+                className="rounded-xl"
+                style={{ border: "4px solid #9DDBAD" }}
+                navigation={({ setActiveIndex, activeIndex, length }) => (
+                  <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                    {new Array(length).fill("").map((_, i) => (
+                      <span
+                        key={i}
+                        className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                          activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                        }`}
+                        onClick={() => setActiveIndex(i)}
+                      />
+                    ))}
+                  </div>
+                )}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+                  alt="image 1"
+                  className="h-full w-full object-cover"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+                  alt="image 1"
+                  className="h-full w-full object-cover"
+                />
+              </Carousel>
+              <br />
+              <Typography>
+                وريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي
+                الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان
+                لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها
+                من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة
+                قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً
+                وبشكله الأصلي في الطباعة
+              </Typography>
+            </CardBody>
+          </div>
+        </DialogBody>
+        <DialogFooter className="justify-between">. </DialogFooter>
+      </Dialog>
     </div>
   );
 }
