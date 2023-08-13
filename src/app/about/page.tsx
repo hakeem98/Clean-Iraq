@@ -72,3 +72,4 @@ export default function about({}: Props) {
   )
 }
 
+export default About
