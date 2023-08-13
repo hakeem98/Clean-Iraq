@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import { Checkbox, Input } from "../../material-tailwind";
 import FormField from "@/components/FormField";
+import { Tajawal } from "next/font/google";
 
 type Props = {};
+
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
 export default function page({}: Props) {
   const [options, setOptions] = useState([
@@ -47,7 +50,9 @@ export default function page({}: Props) {
 
   return (
     <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]">
-      <div className="container  max-w-[640px] px-[1.5rem] sm:mx-auto ">
+      <div
+        className={`container  max-w-[640px] px-[1.5rem] sm:mx-auto ${tajawal.className}`}
+      >
         <div className="donor__title text-center">
           <h1 className="text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] font-[600]">
             الرجاء ملىء المعلومات التالية

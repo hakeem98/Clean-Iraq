@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Nav from "@/components/Navbar/Nav";
 import Footer from "@/components/Footer/Footer";
+import { Tajawal } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Clean Iraq",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={tajawal.className}>
         <Nav />
         {children}
         <Footer />

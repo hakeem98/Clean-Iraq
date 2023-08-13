@@ -1,5 +1,9 @@
 import React from "react";
 import { Typography } from "../../app/material-tailwind";
+import { Tajawal } from "next/font/google";
+
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
+
 type Props = {};
 
 const facebookIcon = (
@@ -92,7 +96,7 @@ export default function Footer({}: Props) {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="mb-3 text-[#E3AB5D] font-bold"
+                  className={`mb-3 text-[#E3AB5D] font-bold ${tajawal.className}`}
                 >
                   {title}
                 </Typography>
@@ -102,7 +106,7 @@ export default function Footer({}: Props) {
                       as="a"
                       href={link}
                       color="gray"
-                      className="py-1.5 font-normal flex items-center text-white transition-colors hover:text-gray-400"
+                      className={`py-1.5 font-normal flex items-center text-white transition-colors hover:text-gray-400 ${tajawal.className}`}
                     >
                       <span className="ml-2">{icon && icon}</span>
                       {label}
@@ -116,7 +120,7 @@ export default function Footer({}: Props) {
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-gray-400 opacity-45 md:mb-0"
+            className={`mb-4 text-center font-normal text-gray-400 opacity-45 md:mb-0 ${tajawal.className}`}
           >
             &copy; {currentYear} <a href="#">clean iraq</a>. All Rights
             Reserved.

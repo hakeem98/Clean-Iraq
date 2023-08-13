@@ -25,6 +25,10 @@ import ImageGallery from "@/components/ImageGallery";
 import FormField from "@/components/FormField";
 import Stats from "@/components/Stats";
 
+import { Tajawal } from "next/font/google";
+
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
+
 export default function Home() {
   const [markers, setMarkers] = useState([
     {
@@ -53,7 +57,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className={tajawal.className}>
       <HomeCarousel />
       {/* About us */}
       <div className="container mx-auto px-4">
@@ -69,7 +73,11 @@ export default function Home() {
             className="aboutUsContent flex justify-center items-start flex-col pl-0 sm:pl-4"
             dir="rtl"
           >
-            <Typography variant="h2" color="black" className="mb-2 text-center">
+            <Typography
+              variant="h2"
+              color="black"
+              className={`mb-2 text-center ${tajawal.className}`}
+            >
               من نحن؟
             </Typography>
             <p>
@@ -91,7 +99,11 @@ export default function Home() {
         <div className="events pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto">
           {/* map and location */}
           <div className="" dir="rtl">
-            <Typography variant="h2" color="black" className="mb-2">
+            <Typography
+              variant="h2"
+              color="black"
+              className={`mb-2 ${tajawal.className}`}
+            >
               الحملات الجاية
             </Typography>
             <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
@@ -205,7 +217,11 @@ export default function Home() {
 
       {/* Posts */}
       <div className="posts container sm:mx-auto mt-[6rem]">
-        <Typography variant="h2" color="dark" className="text-center mb-[4rem]">
+        <Typography
+          variant="h2"
+          color="dark"
+          className={`text-center mb-[4rem] ${tajawal.className}`}
+        >
           شاركنا تجربتك
         </Typography>
         <div className="">
@@ -227,10 +243,18 @@ export default function Home() {
       {/* Subs */}
       <div className="subs my-[8rem]">
         <div className="container mx-auto">
-          <Typography variant="h3" color="dark" className="text-center">
+          <Typography
+            variant="h3"
+            color="dark"
+            className={`text-center ${tajawal.className}`}
+          >
             اشترك
           </Typography>
-          <Typography variant="p" color="dark" className="text-center">
+          <Typography
+            variant="p"
+            color="dark"
+            className={`text-center ${tajawal.className}`}
+          >
             لتبقى على اطلاع وعلم بالحملات والمبادرات القادمة
           </Typography>
           <form dir="rtl">
