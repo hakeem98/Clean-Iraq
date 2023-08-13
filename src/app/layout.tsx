@@ -1,10 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Tajawal } from "next/font/google"; 
+import Navbar from "@/components/Navbar/Navbar"; 
+import Footer from "@/components/Footer/Footer"; 
+
+// Keep the Tajawal font import
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
+
 
 export const metadata: Metadata = {
   title: "Clean Iraq",
@@ -17,9 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="rtl">
-      <body className={inter.className}>
-        <Navbar />
+
+    <html lang="en" dir="rtl"> 
+      <body className={tajawal.className}>
+        <Navbar /> 
+
         {children}
         <Footer />
       </body>
