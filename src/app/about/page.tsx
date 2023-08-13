@@ -14,6 +14,7 @@ export default function about({}: Props) {
 
         <div className="heroContent pt-[10rem] text-center md:text-start z-[10] px-[2rem] md:max-w-[800px] md:pt-[15rem]">
           <Typography className="text-2xl md:text-3xl font-600 text-white">
+
             بدأت الفكرة مع صديقنا مرتضى التميمي الذي قرر تنظيف نهر دجلة
             للاستمتاع بغروب الشمس.
           </Typography>
@@ -26,6 +27,7 @@ export default function about({}: Props) {
       </div>
 
       <div className="about mb-[8rem] container sm:mx-auto mt-[6rem] ml-0 ">
+
         <div className="post flex flex-col lg:mx-[8rem] md:flex-row px-[1rem] mt-[2rem]">
           <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">
             <div className="w-full h-full pl-0 pr-[12rem] py-[2rem]">
@@ -35,6 +37,7 @@ export default function about({}: Props) {
 
           <div
             className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
+
             dir="rtl"
           >
             <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center">
@@ -57,6 +60,7 @@ export default function about({}: Props) {
             <br></br>
             <div
               className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
+
               dir="rtl"
             >
               <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center">
