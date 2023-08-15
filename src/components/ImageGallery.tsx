@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Typography } from "../app/material-tailwind";
 import Image from "./Image";
+import { Tajawal } from "next/font/google";
+
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
 type Props = {};
 
@@ -50,7 +53,7 @@ export default function ImageGallery({}: Props) {
         <Typography
           variant="h2"
           color="dark"
-          className="text-center pt-[3rem] pb-[2rem]"
+          className={`text-center pt-[3rem] pb-[2rem] ${tajawal.className}`}
         >
           الصور
         </Typography>

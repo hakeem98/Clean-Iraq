@@ -29,7 +29,6 @@ import { Tajawal } from "next/font/google";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
-
 export default function Home() {
   const [markers, setMarkers] = useState([
     {
@@ -59,7 +58,6 @@ export default function Home() {
 
   return (
     <div className={tajawal.className}>
-
       <HomeCarousel />
       {/* About us */}
       <div className="container mx-auto px-4">
@@ -68,7 +66,6 @@ export default function Home() {
           <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">
             <div className="w-full h-full px-[4rem] py-[2rem] ">
               <div className="bg-[url('/assets/1.png')] w-full shadow-[10px_10px_0px_0px_#9DDBAD] transition hover:shadow-[0px_0px_0px_0px_#9DDBAD] rounded-md h-full bg-cover bg-center"></div>
-
             </div>
           </div>
 
@@ -91,27 +88,22 @@ export default function Home() {
             </p>
             <LinkButton link="/about">قراءة المزيد</LinkButton>
           </div>
-
         </div>
       </div>
 
       {/* Events and Stats */}
       <div className="statsAndEvents relative bg-[#9DDBAD] mt-[40rem] md:mt-[20rem]">
-
         <Stats />
-
 
         {/* Events */}
         <div className="events pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto">
           {/* map and location */}
           <div className="" dir="rtl">
-
             <Typography
               variant="h2"
               color="black"
               className={`mb-2 ${tajawal.className}`}
             >
-
               الحملات الجاية
             </Typography>
             <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
@@ -133,7 +125,6 @@ export default function Home() {
           {/* list of the events */}
           {/* 1 */}
           <div className="events-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
             <Link href={"/join"}>
               <EventCard>
                 <div className="mt-[4rem] children">
@@ -162,7 +153,6 @@ export default function Home() {
                     شارك
                   </Button>
                 </div>
-
               </EventCard>
             </Link>
 
@@ -246,11 +236,9 @@ export default function Home() {
             <LinkButton link="/blogs">
               <Typography variant="h5">رؤية المزيد</Typography>
             </LinkButton>
-
           </div>
         </div>
       </div>
-
 
       {/* Gallery */}
       <ImageGallery />

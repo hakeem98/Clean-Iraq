@@ -4,7 +4,9 @@ import { Typography } from "../app/material-tailwind";
 import { GoPerson } from "react-icons/go";
 import { PiTrash } from "react-icons/pi";
 import { IoLocationOutline } from "react-icons/io5";
+import { Tajawal } from "next/font/google";
 
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
 
 export default function Stats({}: Props) {
@@ -25,7 +27,7 @@ export default function Stats({}: Props) {
           <Typography
             variant="h2"
             color="white"
-            className="text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]"
+            className={`text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] ${tajawal.className}`}
           >
             متطوع
           </Typography>
@@ -45,7 +47,7 @@ export default function Stats({}: Props) {
           <Typography
             variant="h2"
             color="white"
-            className="text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]"
+            className={`text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] ${tajawal.className}`}
           >
             كيس نفايات
           </Typography>
@@ -65,7 +67,7 @@ export default function Stats({}: Props) {
           <Typography
             variant="h2"
             color="white"
-            className="text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem]"
+            className={`text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] ${tajawal.className}`}
           >
             حملة تنظيف
           </Typography>

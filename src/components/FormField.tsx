@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { Input } from "../app/material-tailwind";
 
 type Props = {
   name: string;

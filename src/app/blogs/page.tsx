@@ -35,7 +35,7 @@ const posts = [
 export default function Blog() {
   return (
     <div
-      className=" container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto flex-column justify-center items-center my-10 "
+      className=" container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto flex-column justify-center items-center  "
       dir="rtl"
     >
       <div className="mx-16">
