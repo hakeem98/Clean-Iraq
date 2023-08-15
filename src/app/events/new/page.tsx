@@ -1,21 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Typography,
-  Input,
-  Button,
-  Textarea,
-  Checkbox,
-} from "../../material-tailwind";
+import { Typography, Input, Button, Textarea } from "../../material-tailwind";
 import MyGoogleMaps from "../../../components/MyGoogleMaps";
 
-import { LoadScript, GoogleMap, Marker } from "@react-google-maps/api";
+import { Marker } from "@react-google-maps/api";
 import FormField from "@/components/FormField";
 
 type Props = {};
 
 export default function newEvent({}: Props) {
-  const [marker, setMarker] = useState<{ lat: number; lng: number }>();
+  const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(
+    null
+  );
 
   const handleMapClick = (event: google.maps.MapMouseEvent) => {
     if (event.latLng) {
@@ -28,10 +24,7 @@ export default function newEvent({}: Props) {
   };
 
   const handlePinClick = () => {
-    setMarker({
-      lat: 0,
-      lng: 0,
-    });
+    setMarker(null);
   };
 
   return (
