@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Checkbox, Input } from "../../material-tailwind";
 import FormField from "@/components/FormField";
+import { useForm } from "react-hook-form";
 import { Tajawal } from "next/font/google";
 
 type Props = {};
@@ -48,6 +49,14 @@ export default function page({}: Props) {
     },
   ]);
 
+  const { register, handleSubmit, reset, formState } = useForm();
+  const { errors } = formState;
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]">
       <div
@@ -60,7 +69,7 @@ export default function page({}: Props) {
         </div>
 
         <div className="">
-          <form className="w-full">
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-[1rem] px-2 py-4 bg-white rounded-[6px] shadow-md flex flex-col items-start">
               <h1 className="mb-[.8rem] text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem]">
                 بشنو تحب تتبرع
@@ -68,7 +77,12 @@ export default function page({}: Props) {
               {options.map((option) => (
                 <div key={option.id}>
                   <div className="py-[.2rem] flex items-center">
-                    <Checkbox color="teal" id={option.title} name="option" />
+                    <Checkbox
+                      {...register("option")}
+                      color="teal"
+                      id={option.title}
+                      name="option"
+                    />
 
                     <label
                       htmlFor={option.title}
@@ -106,6 +120,7 @@ export default function page({}: Props) {
 
               <FormField name="phoneNumber" label="رقم الهاتف">
                 <Input
+                  type="tel"
                   className="bg-[#F6F6F6] pt-2"
                   id="phoneNumber"
                   name="phoneNumber"

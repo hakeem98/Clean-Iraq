@@ -19,6 +19,9 @@ import FormField from "@/components/FormField";
 import { PiTrash } from "react-icons/pi";
 import { GoPerson } from "react-icons/go";
 import { GiPathDistance } from "react-icons/gi";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 export default function events() {
   const [markers, setMarkers] = useState([
@@ -45,6 +48,28 @@ export default function events() {
   };
   const handlePinClick = () => {
     console.log("clicked");
+  };
+
+  const schema = yup
+    .object({
+      name: yup.string().required("الرجاء ادخال الاسم"),
+      suggestion: yup
+        .string()
+        .max(100, "الرجاء ادخال رسالتك بحد أقصى 100 حرف")
+        .min(10, "الرجاء ادخال رسالتك على الأقل 10 أحرف")
+        .required("الرجاء ادخل رسالتك قبل الارسال"),
+    })
+    .required();
+
+  const { register, handleSubmit, reset, formState } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const { errors } = formState;
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+
+    reset();
   };
 
   return (
@@ -167,30 +192,35 @@ export default function events() {
         >
           عندك اقتراحات للحملة الجاية؟
         </Typography>
-        <form>
-          <FormField name="name" label="الأسم">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormField name="name" label="الأسم" error={errors.name}>
             <Input
               className="bg-[#F6F6F6] pt-2"
               id="name"
-              name="name"
+              {...register("name")}
               variant="standard"
               color="blue"
               label="الأسم"
             />
           </FormField>
-          <FormField name="suggestion" label="شنو هو اقتراحك">
+          <FormField
+            name="suggestion"
+            label="شنو هو اقتراحك"
+            error={errors.suggestion}
+          >
             <Textarea
               variant="standard"
               color="blue"
               label="اكتب اقتراحك هنا..."
               className="bg-[#F6F6F6] pt-2"
               id="suggestion"
-              name="suggestion"
+              {...register("suggestion")}
             />
           </FormField>
 
           <div className="btn">
             <Button
+              type="submit"
               size="lg"
               color="amber"
               className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
