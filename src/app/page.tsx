@@ -1,20 +1,9 @@
 "use client";
 import HomeCarousel from "../components/HomeCarousel";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Input,
-  Button,
-  Textarea,
-} from "./material-tailwind";
+import { Typography, Input, Button } from "./material-tailwind";
 import { useState } from "react";
 import MyGoogleMaps from "../components/MyGoogleMaps";
-import { LoadScript, GoogleMap, Marker } from "@react-google-maps/api";
-import { GoPerson } from "react-icons/go";
-import { PiTrash } from "react-icons/pi";
-import { IoLocationOutline } from "react-icons/io5";
+import { Marker } from "@react-google-maps/api";
 import Link from "next/link";
 import EventCard from "@/components/EventCard";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -24,8 +13,10 @@ import LinkButton from "@/components/LinkButton";
 import ImageGallery from "@/components/ImageGallery";
 import FormField from "@/components/FormField";
 import Stats from "@/components/Stats";
-
 import { Tajawal } from "next/font/google";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
@@ -54,6 +45,26 @@ export default function Home() {
   };
   const handlePinClick = () => {
     console.log("clicked");
+  };
+
+  const schema = yup
+    .object({
+      email: yup
+        .string()
+        .email("الرجاء ادخال بريد الكتروني صحيح 'example@email.com'")
+        .required("للاشتراك, الرجاء ادخال البريد الالكتروني"),
+    })
+    .required();
+
+  const { register, handleSubmit, reset, formState } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const { errors } = formState;
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+
+    reset();
   };
 
   return (
@@ -260,20 +271,27 @@ export default function Home() {
           >
             لتبقى على اطلاع وعلم بالحملات والمبادرات القادمة
           </Typography>
-          <form dir="rtl">
-            <FormField name="email" label="البريد الألكتروني">
+          <form dir="rtl" onSubmit={handleSubmit(onSubmit)}>
+            <FormField
+              name="email"
+              label="البريد الألكتروني"
+              error={errors.email}
+            >
               <Input
                 className="bg-[#F6F6F6] pt-2"
-                name="name"
                 variant="standard"
                 color="blue"
                 label="البريد الألكتروني"
                 id="email"
+                {...register("email", {
+                  required: "للاشتراك, الرجاء ادخال البريد الالكتروني",
+                })}
               />
             </FormField>
 
             <div className="btn">
               <Button
+                type="submit"
                 size="lg"
                 color="amber"
                 className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
