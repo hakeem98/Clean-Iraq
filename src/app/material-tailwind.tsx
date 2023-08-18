@@ -16,6 +16,10 @@ import {
   Navbar,
   MobileNav,
   IconButton,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
 } from "@material-tailwind/react";
 
 export {
@@ -34,4 +38,8 @@ export {
   Navbar,
   MobileNav,
   IconButton,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
 };
