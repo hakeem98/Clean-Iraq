@@ -17,6 +17,8 @@ import { Tajawal } from "next/font/google";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import AnimateOnView from "../components/AnimateOnView";
+import Organizers from "../components/Organizers";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
@@ -73,33 +75,35 @@ export default function Home() {
       {/* About us */}
       <div className="container mx-auto px-4">
         {/* About us */}
-        <div className="aboutUs flex flex-col md:flex-row px-[1rem] mt-[2rem]">
-          <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">
-            <div className="w-full h-full px-[4rem] py-[2rem] ">
-              <div className="bg-[url('/assets/1.png')] w-full shadow-[10px_10px_0px_0px_#9DDBAD] transition hover:shadow-[0px_0px_0px_0px_#9DDBAD] rounded-md h-full bg-cover bg-center"></div>
+        <AnimateOnView>
+          <div className="aboutUs flex flex-col md:flex-row px-[1rem] mt-[2rem]">
+            <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">
+              <div className="w-full h-full px-[4rem] py-[2rem] ">
+                <div className="bg-[url('/assets/1.png')] w-full shadow-[10px_10px_0px_0px_#9DDBAD] transition hover:shadow-[0px_0px_0px_0px_#9DDBAD] rounded-md h-full bg-cover bg-center"></div>
+              </div>
+            </div>
+
+            <div
+              className="aboutUsContent flex justify-center items-start flex-col pl-0 sm:pl-4"
+              dir="rtl"
+            >
+              <Typography
+                variant="h2"
+                color="black"
+                className={`mb-2 text-center ${tajawal.className}`}
+              >
+                من نحن؟
+              </Typography>
+              <p>
+                وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت
+                دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو
+                لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
+              </p>
+              <LinkButton link="/about">قراءة المزيد</LinkButton>
             </div>
           </div>
-
-          <div
-            className="aboutUsContent flex justify-center items-start flex-col pl-0 sm:pl-4"
-            dir="rtl"
-          >
-            <Typography
-              variant="h2"
-              color="black"
-              className={`mb-2 text-center ${tajawal.className}`}
-            >
-              من نحن؟
-            </Typography>
-            <p>
-              وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت
-              دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا .
-              يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو
-              لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-            </p>
-            <LinkButton link="/about">قراءة المزيد</LinkButton>
-          </div>
-        </div>
+        </AnimateOnView>
       </div>
 
       {/* Events and Stats */}
@@ -117,115 +121,130 @@ export default function Home() {
             >
               الحملات الجاية
             </Typography>
-            <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
-              <div className="google-map rounded-md overflow-hidden h-full w-full ">
-                <MyGoogleMaps handleMapClick={handleMapClick} zoom={5}>
-                  {markers &&
-                    markers.map((marker, index) => (
-                      <Marker
-                        key={index}
-                        position={{ lat: marker.lat, lng: marker.lng }}
-                        onClick={handlePinClick}
-                      />
-                    ))}
-                </MyGoogleMaps>
+            <AnimateOnView>
+              <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
+                <div className="google-map rounded-md overflow-hidden h-full w-full ">
+                  <MyGoogleMaps handleMapClick={handleMapClick} zoom={5}>
+                    {markers &&
+                      markers.map((marker, index) => (
+                        <Marker
+                          key={index}
+                          position={{ lat: marker.lat, lng: marker.lng }}
+                          onClick={handlePinClick}
+                        />
+                      ))}
+                  </MyGoogleMaps>
+                </div>
               </div>
-            </div>
+            </AnimateOnView>
           </div>
 
           {/* list of the events */}
-          {/* 1 */}
-          <div className="events-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href={"/join"}>
-              <EventCard>
-                <div className="mt-[4rem] children">
-                  <div className="flex flex-col my-4">
-                    <div className="location mb-2 flex items-center py-2">
-                      <div className="icon mx-2">
-                        <GoLocation className="text-[2rem] text-white" />
+          <AnimateOnView>
+            <div className="events-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Link href={"/join"}>
+                <EventCard>
+                  <div className="mt-[4rem] children">
+                    <div className="flex flex-col my-4">
+                      <div className="location mb-2 flex items-center py-2">
+                        <div className="icon mx-2">
+                          <GoLocation className="text-[2rem] text-white" />
+                        </div>
+
+                        <Typography variant="h5" className="text-gray-100">
+                          بغداد / ابو نؤاس مقابل مطعم ورق عنب
+                        </Typography>
                       </div>
 
-                      <Typography variant="h5" className="text-gray-100">
-                        بغداد / ابو نؤاس مقابل مطعم ورق عنب
-                      </Typography>
-                    </div>
+                      <div className="time flex items-center">
+                        <div className="icon mx-2">
+                          <AiOutlineClockCircle className="text-[2rem] text-white" />
+                        </div>
 
-                    <div className="time flex items-center">
-                      <div className="icon mx-2">
-                        <AiOutlineClockCircle className="text-[2rem] text-white" />
+                        <Typography variant="h5" className="text-gray-100">
+                          11:00 صباحاً
+                        </Typography>
                       </div>
-
-                      <Typography variant="h5" className="text-gray-100">
-                        11:00 صباحاً
-                      </Typography>
                     </div>
+                    <Button
+                      size="lg"
+                      color="amber"
+                      className="w-full font-light"
+                    >
+                      شارك
+                    </Button>
                   </div>
-                  <Button size="lg" color="amber" className="w-full font-light">
-                    شارك
-                  </Button>
-                </div>
-              </EventCard>
-            </Link>
+                </EventCard>
+              </Link>
 
-            <Link href={"/join"}>
-              <EventCard>
-                <div className="mt-[4rem] children">
-                  <div className="flex flex-col my-4">
-                    <div className="location mb-2 flex items-center py-2">
-                      <div className="icon mx-2">
-                        <GoLocation className="text-[2rem] text-white" />
+              <Link href={"/join"}>
+                <EventCard>
+                  <div className="mt-[4rem] children">
+                    <div className="flex flex-col my-4">
+                      <div className="location mb-2 flex items-center py-2">
+                        <div className="icon mx-2">
+                          <GoLocation className="text-[2rem] text-white" />
+                        </div>
+                        <Typography variant="h5" className="text-gray-100">
+                          بغداد / ابو نؤاس مقابل مطعم ورق عنب
+                        </Typography>
                       </div>
-                      <Typography variant="h5" className="text-gray-100">
-                        بغداد / ابو نؤاس مقابل مطعم ورق عنب
-                      </Typography>
-                    </div>
-                    <div className="time flex items-center">
-                      <div className="icon mx-2">
-                        <AiOutlineClockCircle className="text-[2rem] text-white" />
+                      <div className="time flex items-center">
+                        <div className="icon mx-2">
+                          <AiOutlineClockCircle className="text-[2rem] text-white" />
+                        </div>
+                        <Typography variant="h5" className="text-gray-100">
+                          11:00 صباحاً
+                        </Typography>
                       </div>
-                      <Typography variant="h5" className="text-gray-100">
-                        11:00 صباحاً
-                      </Typography>
                     </div>
+                    <Button
+                      size="lg"
+                      color="amber"
+                      className="w-full font-light"
+                    >
+                      شارك
+                    </Button>
                   </div>
-                  <Button size="lg" color="amber" className="w-full font-light">
-                    شارك
-                  </Button>
-                </div>
-              </EventCard>
-            </Link>
+                </EventCard>
+              </Link>
 
-            <Link href={"/join"}>
-              <EventCard>
-                <div className="mt-[4rem] children">
-                  <div className="flex flex-col my-4">
-                    <div className="location mb-2 flex items-center py-2">
-                      <div className="icon mx-2">
-                        <GoLocation className="text-[2rem] text-white" />
+              <Link href={"/join"}>
+                <EventCard>
+                  <div className="mt-[4rem] children">
+                    <div className="flex flex-col my-4">
+                      <div className="location mb-2 flex items-center py-2">
+                        <div className="icon mx-2">
+                          <GoLocation className="text-[2rem] text-white" />
+                        </div>
+                        <Typography variant="h5" className="text-gray-100">
+                          بغداد / ابو نؤاس مقابل مطعم ورق عنب
+                        </Typography>
                       </div>
-                      <Typography variant="h5" className="text-gray-100">
-                        بغداد / ابو نؤاس مقابل مطعم ورق عنب
-                      </Typography>
-                    </div>
-                    <div className="time flex items-center">
-                      <div className="icon mx-2">
-                        <AiOutlineClockCircle className="text-[2rem] text-white" />
+                      <div className="time flex items-center">
+                        <div className="icon mx-2">
+                          <AiOutlineClockCircle className="text-[2rem] text-white" />
+                        </div>
+                        <Typography variant="h5" className="text-gray-100">
+                          11:00 صباحاً
+                        </Typography>
                       </div>
-                      <Typography variant="h5" className="text-gray-100">
-                        11:00 صباحاً
-                      </Typography>
                     </div>
+                    <Button
+                      size="lg"
+                      color="amber"
+                      className="w-full font-light"
+                    >
+                      شارك
+                    </Button>
                   </div>
-                  <Button size="lg" color="amber" className="w-full font-light">
-                    شارك
-                  </Button>
-                </div>
-              </EventCard>
-            </Link>
-          </div>
-          <LinkButton link="/events">
-            <Typography variant="h5">رؤية المزيد</Typography>
-          </LinkButton>
+                </EventCard>
+              </Link>
+            </div>
+            <LinkButton link="/events">
+              <Typography variant="h5">رؤية المزيد</Typography>
+            </LinkButton>
+          </AnimateOnView>
         </div>
       </div>
 
@@ -254,53 +273,58 @@ export default function Home() {
       {/* Gallery */}
       <ImageGallery />
 
+      {/* Organizers */}
+      <Organizers />
+
       {/* Subs */}
       <div className="subs my-[8rem]">
-        <div className="container mx-auto">
-          <Typography
-            variant="h3"
-            color="dark"
-            className={`text-center ${tajawal.className}`}
-          >
-            اشترك
-          </Typography>
-          <Typography
-            variant="p"
-            color="dark"
-            className={`text-center ${tajawal.className}`}
-          >
-            لتبقى على اطلاع وعلم بالحملات والمبادرات القادمة
-          </Typography>
-          <form dir="rtl" onSubmit={handleSubmit(onSubmit)}>
-            <FormField
-              name="email"
-              label="البريد الألكتروني"
-              error={errors.email}
+        <AnimateOnView>
+          <div className="container mx-auto">
+            <Typography
+              variant="h3"
+              color="dark"
+              className={`text-center ${tajawal.className}`}
             >
-              <Input
-                className="bg-[#F6F6F6] pt-2"
-                variant="standard"
-                color="blue"
+              اشترك
+            </Typography>
+            <Typography
+              variant="p"
+              color="dark"
+              className={`text-center ${tajawal.className}`}
+            >
+              لتبقى على اطلاع وعلم بالحملات والمبادرات القادمة
+            </Typography>
+            <form dir="rtl" onSubmit={handleSubmit(onSubmit)}>
+              <FormField
+                name="email"
                 label="البريد الألكتروني"
-                id="email"
-                {...register("email", {
-                  required: "للاشتراك, الرجاء ادخال البريد الالكتروني",
-                })}
-              />
-            </FormField>
-
-            <div className="btn">
-              <Button
-                type="submit"
-                size="lg"
-                color="amber"
-                className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
+                error={errors.email}
               >
-                اشترك
-              </Button>
-            </div>
-          </form>
-        </div>
+                <Input
+                  className="bg-[#F6F6F6] pt-2"
+                  variant="standard"
+                  color="blue"
+                  label="البريد الألكتروني"
+                  id="email"
+                  {...register("email", {
+                    required: "للاشتراك, الرجاء ادخال البريد الالكتروني",
+                  })}
+                />
+              </FormField>
+
+              <div className="btn">
+                <Button
+                  type="submit"
+                  size="lg"
+                  color="amber"
+                  className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
+                >
+                  اشترك
+                </Button>
+              </div>
+            </form>
+          </div>
+        </AnimateOnView>
       </div>
     </div>
   );

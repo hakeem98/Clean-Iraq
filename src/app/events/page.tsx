@@ -22,6 +22,7 @@ import { GiPathDistance } from "react-icons/gi";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import AnimateOnView from "@/components/AnimateOnView";
 
 export default function events() {
   const [markers, setMarkers] = useState([
@@ -192,43 +193,45 @@ export default function events() {
         >
           عندك اقتراحات للحملة الجاية؟
         </Typography>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FormField name="name" label="الأسم" error={errors.name}>
-            <Input
-              className="bg-[#F6F6F6] pt-2"
-              id="name"
-              {...register("name")}
-              variant="standard"
-              color="blue"
-              label="الأسم"
-            />
-          </FormField>
-          <FormField
-            name="suggestion"
-            label="شنو هو اقتراحك"
-            error={errors.suggestion}
-          >
-            <Textarea
-              variant="standard"
-              color="blue"
-              label="اكتب اقتراحك هنا..."
-              className="bg-[#F6F6F6] pt-2"
-              id="suggestion"
-              {...register("suggestion")}
-            />
-          </FormField>
-
-          <div className="btn">
-            <Button
-              type="submit"
-              size="lg"
-              color="amber"
-              className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
+        <AnimateOnView>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormField name="name" label="الأسم" error={errors.name}>
+              <Input
+                className="bg-[#F6F6F6] pt-2"
+                id="name"
+                {...register("name")}
+                variant="standard"
+                color="blue"
+                label="الأسم"
+              />
+            </FormField>
+            <FormField
+              name="suggestion"
+              label="شنو هو اقتراحك"
+              error={errors.suggestion}
             >
-              إرسال
-            </Button>
-          </div>
-        </form>
+              <Textarea
+                variant="standard"
+                color="blue"
+                label="اكتب اقتراحك هنا..."
+                className="bg-[#F6F6F6] pt-2"
+                id="suggestion"
+                {...register("suggestion")}
+              />
+            </FormField>
+
+            <div className="btn">
+              <Button
+                type="submit"
+                size="lg"
+                color="amber"
+                className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
+              >
+                إرسال
+              </Button>
+            </div>
+          </form>
+        </AnimateOnView>
       </div>
 
       <div className="mt-[4rem]" dir="rtl">
@@ -236,117 +239,121 @@ export default function events() {
           الحملات السابقة
         </Typography>
 
-        <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
-          <div className="google-map rounded-md overflow-hidden h-full w-full ">
-            <MyGoogleMaps handleMapClick={handleMapClick} zoom={5}>
-              {markers &&
-                markers.map((marker, index) => (
-                  <Marker
-                    key={index}
-                    position={{ lat: marker.lat, lng: marker.lng }}
-                    onClick={handlePinClick}
-                  />
-                ))}
-            </MyGoogleMaps>
+        <AnimateOnView>
+          <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
+            <div className="google-map rounded-md overflow-hidden h-full w-full ">
+              <MyGoogleMaps handleMapClick={handleMapClick} zoom={5}>
+                {markers &&
+                  markers.map((marker, index) => (
+                    <Marker
+                      key={index}
+                      position={{ lat: marker.lat, lng: marker.lng }}
+                      onClick={handlePinClick}
+                    />
+                  ))}
+              </MyGoogleMaps>
+            </div>
           </div>
-        </div>
+        </AnimateOnView>
       </div>
 
       {/* list of the events */}
-      <div className="events-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <EventCard>
-          <div className="mt-[4rem] children">
-            <div className="flex flex-col my-4">
-              <div className="location mb-2 flex items-center py-2">
-                <div className="icon mx-2">
-                  <GiPathDistance className="text-[2rem] text-white" />
+      <AnimateOnView>
+        <div className="events-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <EventCard>
+            <div className="mt-[4rem] children">
+              <div className="flex flex-col my-4">
+                <div className="location mb-2 flex items-center py-2">
+                  <div className="icon mx-2">
+                    <GiPathDistance className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    تم تنظيف اكثر من 15km
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  تم تنظيف اكثر من 15km
-                </Typography>
-              </div>
-              <div className="garbage flex items-center py-2">
-                <div className="icon mx-2">
-                  <PiTrash className="text-[2rem] text-white" />
+                <div className="garbage flex items-center py-2">
+                  <div className="icon mx-2">
+                    <PiTrash className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    10000 كيس نفايات
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  10000 كيس نفايات
-                </Typography>
-              </div>
-              <div className="garbage flex items-center py-2">
-                <div className="icon mx-2">
-                  <GoPerson className="text-[2rem] text-white" />
+                <div className="garbage flex items-center py-2">
+                  <div className="icon mx-2">
+                    <GoPerson className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    بمساعدة اكثر من 500 متطوع
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  بمساعدة اكثر من 500 متطوع
-                </Typography>
               </div>
             </div>
-          </div>
-        </EventCard>
+          </EventCard>
 
-        <EventCard>
-          <div className="mt-[4rem] children">
-            <div className="flex flex-col my-4">
-              <div className="location mb-2 flex items-center py-2">
-                <div className="icon mx-2">
-                  <GiPathDistance className="text-[2rem] text-white" />
+          <EventCard>
+            <div className="mt-[4rem] children">
+              <div className="flex flex-col my-4">
+                <div className="location mb-2 flex items-center py-2">
+                  <div className="icon mx-2">
+                    <GiPathDistance className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    تم تنظيف اكثر من 15km
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  تم تنظيف اكثر من 15km
-                </Typography>
-              </div>
-              <div className="garbage flex items-center py-2">
-                <div className="icon mx-2">
-                  <PiTrash className="text-[2rem] text-white" />
+                <div className="garbage flex items-center py-2">
+                  <div className="icon mx-2">
+                    <PiTrash className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    10000 كيس نفايات
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  10000 كيس نفايات
-                </Typography>
-              </div>
-              <div className="garbage flex items-center py-2">
-                <div className="icon mx-2">
-                  <GoPerson className="text-[2rem] text-white" />
+                <div className="garbage flex items-center py-2">
+                  <div className="icon mx-2">
+                    <GoPerson className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    بمساعدة اكثر من 500 متطوع
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  بمساعدة اكثر من 500 متطوع
-                </Typography>
               </div>
             </div>
-          </div>
-        </EventCard>
+          </EventCard>
 
-        <EventCard>
-          <div className="mt-[4rem] children">
-            <div className="flex flex-col my-4">
-              <div className="location mb-2 flex items-center py-2">
-                <div className="icon mx-2">
-                  <GiPathDistance className="text-[2rem] text-white" />
+          <EventCard>
+            <div className="mt-[4rem] children">
+              <div className="flex flex-col my-4">
+                <div className="location mb-2 flex items-center py-2">
+                  <div className="icon mx-2">
+                    <GiPathDistance className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    تم تنظيف اكثر من 15km
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  تم تنظيف اكثر من 15km
-                </Typography>
-              </div>
-              <div className="garbage flex items-center py-2">
-                <div className="icon mx-2">
-                  <PiTrash className="text-[2rem] text-white" />
+                <div className="garbage flex items-center py-2">
+                  <div className="icon mx-2">
+                    <PiTrash className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    10000 كيس نفايات
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  10000 كيس نفايات
-                </Typography>
-              </div>
-              <div className="garbage flex items-center py-2">
-                <div className="icon mx-2">
-                  <GoPerson className="text-[2rem] text-white" />
+                <div className="garbage flex items-center py-2">
+                  <div className="icon mx-2">
+                    <GoPerson className="text-[2rem] text-white" />
+                  </div>
+                  <Typography variant="h5" className="text-gray-100">
+                    بمساعدة اكثر من 500 متطوع
+                  </Typography>
                 </div>
-                <Typography variant="h5" className="text-gray-100">
-                  بمساعدة اكثر من 500 متطوع
-                </Typography>
               </div>
             </div>
-          </div>
-        </EventCard>
-      </div>
+          </EventCard>
+        </div>
+      </AnimateOnView>
 
       <div className="flex justify-center mt-[2rem]">
         <Typography
