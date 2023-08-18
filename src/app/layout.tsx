@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { ThemeProvider } from "./theme-provider";
 
 import { Tajawal } from "next/font/google";
 import Nav from "@/components/Navbar/Nav";
@@ -19,12 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light" style={{colorScheme:"light"}}>
       <body className={tajawal.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" >
         <Nav />
 
-        {children}
+         {children}
         <Footer />
+        </ThemeProvider>
+       
       </body>
     </html>
   );

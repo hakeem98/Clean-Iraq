@@ -8,6 +8,7 @@ import {
   Button,
   IconButton,
 } from "../../app/material-tailwind";
+import Theme from "../theme/theme";
 
 const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -97,6 +98,7 @@ const Nav = () => {
       <div className="w-full shadow-md container mx-auto">
         <Navbar className="bg-green-400 backdrop-blur-xl sticky top-0 z-10 border-none h-max max-w-full rounded-md py-2 px-0 lg:px-8 lg:py-4">
           <div className="flex items-center justify-between px-[2rem] sm:px-[4rem] text-blue-gray-900 overflow-hidden">
+          <Theme/>
             <Typography
               as="a"
               href="/"

@@ -77,7 +77,7 @@ export default function page({}: Props) {
   };
 
   return (
-    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]">
+    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA] dark:bg-black">
       <div
         className={`container  max-w-[640px] px-[1.5rem] sm:mx-auto ${tajawal.className}`}
       >
@@ -87,15 +87,15 @@ export default function page({}: Props) {
           </h1>
         </div>
 
-        <div className="">
-          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+        <div className=" dark:bg-black">
+          <form className="w-full dark:bg-black" onSubmit={handleSubmit(onSubmit)}>
             <FormField
               name="options"
               label="بشنو تحب تتبرع"
               error={errors.options}
             >
-              <div className="">
-                <h1 className="mb-[.8rem] text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem]">
+              <div className=" ">
+                <h1 className="mb-[.8rem] text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem] ">
                   بشنو تحب تتبرع
                 </h1>
                 {options.map((option) => (
@@ -135,10 +135,10 @@ export default function page({}: Props) {
               />
             </FormField>
 
-            <div className="flex flex-col sm:flex-row gap-x-2">
+            <div className="flex flex-col sm:flex-row gap-x-2  dark:text-white">
               <FormField name="name" label="الأسم" error={errors.name}>
                 <Input
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2 dark:text-white"
                   id="name"
                   variant="standard"
                   color="blue"
@@ -154,7 +154,7 @@ export default function page({}: Props) {
               >
                 <Input
                   type="tel"
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="phoneNumber"
                   variant="standard"
                   color="blue"
@@ -168,7 +168,7 @@ export default function page({}: Props) {
 
             <FormField name="location" label="السكن" error={errors.location}>
               <Input
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="location"
                 variant="standard"
                 color="blue"
@@ -184,7 +184,7 @@ export default function page({}: Props) {
                 شارك
               </button>
             </div>
-            <p className="note text-[#595959] mt-2 ">
+            <p className="note text-[#595959] mt-2  dark:text-white">
               بعد الضفط على الزر اعلاه سيتواصل معك الفريق خلال مده قصيرة ليتم
               تأكيد واكمال عملية التبرع
             </p>

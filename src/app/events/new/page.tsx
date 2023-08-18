@@ -63,7 +63,7 @@ export default function newEvent({}: Props) {
       className="max-w-[800px] pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto"
     >
       <div className="">
-        <Typography variant="h2" color="black" className="mb-2 text-center">
+        <Typography variant="h2" color="black" className="mb-2 text-center  dark:text-white">
           بدء حملة جديدة
         </Typography>
 
@@ -71,7 +71,7 @@ export default function newEvent({}: Props) {
           <Typography
             variant="h4"
             color="black"
-            className="font-light mb-2 mt-4"
+            className="font-light mb-2 mt-4  dark:text-white "
           >
             موقع الحملة
           </Typography>
@@ -88,7 +88,7 @@ export default function newEvent({}: Props) {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className="mx-auto ">
         {/* place picture */}
         <FormField name="placeImage" label="صورة المكان">
           <div className="flex justify-start items-start">

@@ -1,13 +1,13 @@
 export const ProfileCard = () => {
   return (
-    <div className="dark:!bg-navy-800 shadow-shadow-500 shadow-3xl rounded-primary relative mx-auto flex h-full w-full max-w-[550px] flex-col items-center bg-white bg-cover bg-clip-border p-[16px] dark:text-white dark:shadow-none">
+    <div className="dark:!bg-navy-800 shadow-shadow-500 shadow-3xl rounded-primary relative mx-auto flex h-full w-full max-w-[550px] flex-col items-center  bg-white bg-cover bg-clip-border p-[16px] dark:text-white dark:shadow-none">
       <div
         className="relative mt-1 flex h-32 w-full justify-center rounded-xl bg-cover"
         style={{
           backgroundImage: 'url("https://i.ibb.co/FWggPq1/banner.png")',
         }}
       >
-        <div className="absolute -bottom-12 flex h-[88px] w-[88px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400">
+        <div className="absolute -bottom-12 flex h-[88px] w-[88px] items-center justify-center rounded-full border-[4px]  border-white bg-pink-400">
           <img
             className="h-full w-full rounded-full"
             src="https://i.ibb.co/6YbS9ff/avatar11.png"

@@ -10,7 +10,7 @@ const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
 export default function join() {
   return (
-    <div className="overflow-hidden mx-auto my-0 flex justify-center items-center flex-col bg-[#F6FFFA]">
+    <div className="overflow-hidden mx-auto my-0 flex justify-center items-center flex-col bg-[#F6FFFA] dark:bg-black">
       <div className="bg-[#82B092] pt-[8rem] md:pt-[6rem] w-full h-[40vh]">
         <div className="w-full flex justify-center px-[1rem]">
           <div className="max-w-[800px] mt-[2rem] pt-[4rem]">
@@ -39,7 +39,7 @@ export default function join() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-          <div className="cardContainer bg-[#FFFFFF] shadow-md mb-4 rounded-[6px]">
+          <div className="cardContainer bg-[#FFFFFF] shadow-md mb-4 rounded-[6px] dark:bg-gray-900">
             <div className="card mx-6 my-8 flex text-center flex-col">
               <div className="iconContainer px-8">
                 <div className="icon p-4 flex justify-center items-center rounded-full bg-[#508161]">
@@ -63,7 +63,7 @@ export default function join() {
             </div>
           </div>
 
-          <div className="cardContainer bg-[#FFFFFF] shadow-md mb-4 rounded-[6px]">
+          <div className="cardContainer bg-[#FFFFFF] shadow-md mb-4 rounded-[6px] dark:bg-gray-900">
             <div className="card mx-6 my-8 flex text-center flex-col">
               <div className="iconContainer px-8">
                 <div className="icon p-4 rounded-full bg-[#508161]">

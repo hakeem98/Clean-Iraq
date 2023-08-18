@@ -3,7 +3,7 @@ import React from "react";
 import { Typography } from "@material-tailwind/react";
 import { Tajawal } from "next/font/google";
 
-const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"]  });
 type Props = {};
 
 interface Image {
@@ -96,7 +96,7 @@ export default function about({}: Props) {
             className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
             dir="rtl"
           >
-            <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center">
+            <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center dark:text-white">
               من هم سفراء النظافة؟
             </h2>
             <p>
@@ -118,7 +118,7 @@ export default function about({}: Props) {
               className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
               dir="rtl"
             >
-              <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center">
+              <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center dark:text-white">
                 رسالتنا
               </h2>
 
@@ -149,7 +149,7 @@ export default function about({}: Props) {
           {orgzData.map((item) => (
             <div
               key={item.id}
-              className="w-full rounded-md overflow-hidden shadow-md bg-white my-8"
+              className="w-full rounded-md overflow-hidden shadow-md bg-white my-8 dark:bg-black dark:text-white"
               dir="rtl"
             >
               <div className="imgContainer h-[23rem] w-full">
@@ -161,9 +161,9 @@ export default function about({}: Props) {
                   />
                 </div>
               </div>
-              <div className=" px-6 py-4">
-                <div className="flex flex-col gap-3 pt-4 ">
-                  <div className="-mt-px flex flex-col">
+              <div className=" px-6 py-4  dark:text-white">
+                <div className="flex flex-col gap-3 pt-4  dark:text-white">
+                  <div className="-mt-px flex flex-col dark:text-white ">
                     <Typography
                       variant="h4"
                       color="blue-gray"

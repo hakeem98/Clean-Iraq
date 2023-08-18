@@ -28,7 +28,7 @@ export default function BlogPost({ post }: any) {
   return (
     <div className="mx-1">
       <Card
-        className="max-w-[450px] max-h-[650px] overflow-hidden m-3 px-6 shadow-lg bg-gray-50 my-7"
+        className="max-w-[450px] max-h-[650px] overflow-hidden m-3 px-6 shadow-lg bg-gray-50 my-7 dark:bg-black"
         onClick={handleOpen}
         style={{
           cursor: "pointer",
@@ -38,11 +38,11 @@ export default function BlogPost({ post }: any) {
           color="transparent"
           floated={false}
           shadow={false}
-          className="flex items-center justify-between pt-0 pb-4 mx-0"
+          className="flex items-center justify-between pt-0 pb-4 mx-0 dark:bg-black"
         >
           <ProfileHeader />
         </CardHeader>
-        <CardBody className="py-1 bg-gray-100 rounded-lg p-3 mx-4">
+        <CardBody className="py-1 bg-gray-100 rounded-lg p-3 mx-4   dark:bg-black dark:text-white">
           <Carousel
             className="rounded-xl"
             style={{ border: "4px solid #9DDBAD" }}
