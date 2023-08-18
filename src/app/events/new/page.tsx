@@ -7,6 +7,7 @@ import { Marker } from "@react-google-maps/api";
 import FormField from "@/components/FormField";
 import { SlPicture } from "react-icons/sl";
 import { Tajawal } from "next/font/google";
+import * as yup from "yup";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
@@ -15,9 +16,22 @@ export default function newEvent({}: Props) {
   const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(
     null
   );
+  const today = new Date().toISOString().split("T")[0];
 
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
+
+  const schema = yup
+    .object({
+      placeName: yup.string().required("الرجاء ادخال مكان الحملة"),
+      eventDate: yup.date().required("Date is required"),
+      eventTime: yup.string().required("Time is required"),
+      notes: yup
+        .string()
+        .max(100, "الرجاء ادخال ملاحظاتك بحد أقصى 100 حرف")
+        .min(10, "الرجاء ادخال ملاحظاتك على الأقل 10 أحرف"),
+    })
+    .required();
 
   const onSubmit = (data: any) => {
     const formData = {
@@ -135,42 +149,58 @@ export default function newEvent({}: Props) {
           </FormField>
 
           {/* campaign date */}
-          <FormField name="campaignDate" label="تاريخ الحملة">
+          <FormField
+            name="campaignDate"
+            label="تاريخ الحملة"
+            error={errors.eventDate}
+          >
             <Input
+              type="date"
+              min={today}
               autoComplete="off"
               className="bg-[#F6F6F6] pt-2"
               id="campaignDate"
               variant="standard"
               color="blue"
               label="تاريخ الحملة"
-              {...register("campaignDate")}
+              {...register("eventDate", {
+                required: "الرجاء ادخال تاريخ الحملة",
+              })}
             />
           </FormField>
 
           {/* campaign time */}
           <FormField name="campaignTime" label="وقت الحملة">
             <Input
+              type="time"
               autoComplete="off"
               className="bg-[#F6F6F6] pt-2"
               id="campaignTime"
               variant="standard"
               color="blue"
               label="وقت الحملة"
-              type="text"
-              {...register("campaignTime")}
+              {...register("eventTime", {
+                required: "الرجاء ادخال وقت الحملة",
+              })}
             />
           </FormField>
         </div>
 
         {/* additional notes */}
-        <FormField name="additionalNotes" label="ملاحظات إضافية (اختياري)">
+        <FormField
+          name="additionalNotes"
+          label="ملاحظات إضافية (اختياري)"
+          error={errors.notes}
+        >
           <Textarea
             variant="standard"
             color="blue"
             label="اضف الملاحظات هنا..."
             className="bg-[#F6F6F6] pt-2"
             id="additionalNotes"
-            {...register("additionalNotes")}
+            {...register("notes", {
+              required: "الرجاء كتابة ملاحظاتك",
+            })}
           />
         </FormField>
 
