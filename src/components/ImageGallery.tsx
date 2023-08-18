@@ -27,7 +27,7 @@ export default function ImageGallery({}: Props) {
     },
     {
       id: 5,
-      imgLink: "assets/gallery/5.JPG",
+      imgLink: "assets/gallery/5.jpg",
     },
     {
       id: 6,
