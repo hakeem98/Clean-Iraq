@@ -49,7 +49,7 @@ const Contact = () => {
       >
         <FormField name="name" label="الأسم" error={errors.name}>
           <Input
-            className="bg-[#F6F6F6] pt-2"
+            className="bg-[#F6F6F6] pt-2  dark:text-white"
             id="name"
             name="name"
             variant="standard"
@@ -59,7 +59,7 @@ const Contact = () => {
         </FormField>
         <FormField name="email" label="البريد الألكتروني" error={errors.email}>
           <Input
-            className="bg-[#F6F6F6] pt-2"
+            className="bg-[#F6F6F6] pt-2  dark:text-white"
             variant="standard"
             color="blue"
             label="البريد الألكتروني"
@@ -74,7 +74,7 @@ const Contact = () => {
             variant="standard"
             color="blue"
             label="شنو هي رسالتك"
-            className="bg-[#F6F6F6]"
+            className="bg-[#F6F6F6]  dark:text-white"
             id="message"
             {...register("message")}
           />

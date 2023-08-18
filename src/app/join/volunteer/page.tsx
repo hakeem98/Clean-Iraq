@@ -37,11 +37,11 @@ export default function page({}: Props) {
   };
 
   return (
-    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]">
+    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA] dark:bg-black  ">
       <div
         className={`container  max-w-[640px] px-[1.5rem] sm:mx-auto ${tajawal.className}`}
       >
-        <div className="donor__title text-center">
+        <div className="donor__title text-center ">
           <h1 className="text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] font-[600]">
             الرجاء ملىء المعلومات التالية
           </h1>
@@ -54,10 +54,10 @@ export default function page({}: Props) {
               المعلومات التالية
             </h3>
 
-            <div className="flex flex-col sm:flex-row gap-x-2">
-              <FormField name="name" label="الأسم" error={errors.name}>
+            <div className="flex flex-col sm:flex-row gap-x-2 ">
+              <FormField  name="name" label="الأسم" error={errors.name}  >
                 <Input
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="name"
                   variant="standard"
                   color="blue"
@@ -72,7 +72,7 @@ export default function page({}: Props) {
                 error={errors.phone_number}
               >
                 <Input
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="phoneNumber"
                   variant="standard"
                   color="blue"
@@ -86,7 +86,7 @@ export default function page({}: Props) {
 
             <FormField name="age" label="العمر" error={errors.age}>
               <Input
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="age"
                 variant="standard"
                 color="blue"
@@ -99,7 +99,7 @@ export default function page({}: Props) {
 
             <FormField name="location" label="السكن" error={errors.location}>
               <Input
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="location"
                 variant="standard"
                 color="blue"
@@ -196,7 +196,7 @@ export default function page({}: Props) {
                 variant="standard"
                 color="blue"
                 label="هل لديك اي تعليق"
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="message"
                 {...register("message", {
                   required: "الرجاء كتابة تعليقك",
@@ -212,7 +212,7 @@ export default function page({}: Props) {
                 شارك
               </button>
             </div>
-            <p className="note text-[#595959] mt-2 ">
+            <p className="note text-[#595959] mt-2   dark:text-white ">
               بعد الضفط على الزر اعلاه سيتواصل معك الفريق خلال مده قصيرة ليتم
               تأكيد طلبك للمشاركة في الحملة
             </p>

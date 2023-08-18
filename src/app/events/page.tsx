@@ -77,7 +77,7 @@ export default function events() {
     <div className="pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto">
       {/* map and location */}
       <div className="" dir="rtl">
-        <Typography variant="h2" color="black" className="mb-2">
+        <Typography variant="h2" color="black" className="mb-2 dark:text-white">
           الحملات الجاية
         </Typography>
 
@@ -189,7 +189,7 @@ export default function events() {
         <Typography
           variant="h2"
           color="black"
-          className="mb-2 text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem]"
+          className="mb-2 text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] dark:text-white"
         >
           عندك اقتراحات للحملة الجاية؟
         </Typography>
@@ -235,7 +235,7 @@ export default function events() {
       </div>
 
       <div className="mt-[4rem]" dir="rtl">
-        <Typography variant="h2" color="black" className="mb-2">
+        <Typography variant="h2" color="black" className="mb-2 dark:text-white">
           الحملات السابقة
         </Typography>
 
