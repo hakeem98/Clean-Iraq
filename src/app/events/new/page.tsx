@@ -8,11 +8,13 @@ import FormField from "@/components/FormField";
 import { SlPicture } from "react-icons/sl";
 import { Tajawal } from "next/font/google";
 import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
 
 export default function newEvent({}: Props) {
+  const { t, i18n } = useTranslation();
   const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(
     null
   );
@@ -23,13 +25,19 @@ export default function newEvent({}: Props) {
 
   const schema = yup
     .object({
-      placeName: yup.string().required("الرجاء ادخال مكان الحملة"),
-      eventDate: yup.date().required("Date is required"),
-      eventTime: yup.string().required("Time is required"),
+      placeName: yup
+        .string()
+        .required(t("error- please enter the location of the event")),
+      eventDate: yup
+        .date()
+        .required(t("error- please select the date of the event")),
+      eventTime: yup
+        .string()
+        .required(t("error- please select the time of the event")),
       notes: yup
         .string()
-        .max(100, "الرجاء ادخال ملاحظاتك بحد أقصى 100 حرف")
-        .min(10, "الرجاء ادخال ملاحظاتك على الأقل 10 أحرف"),
+        .max(100, t("error- max message"))
+        .min(10, t("error- min message")),
     })
     .required();
 
@@ -59,12 +67,12 @@ export default function newEvent({}: Props) {
 
   return (
     <div
-      dir="rtl"
+      dir={i18n.language === "en" ? "ltr" : "rtl"}
       className="max-w-[800px] pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto"
     >
       <div className="">
         <Typography variant="h2" color="black" className="mb-2 text-center">
-          بدء حملة جديدة
+          {t("start new event")}
         </Typography>
 
         <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
@@ -73,7 +81,7 @@ export default function newEvent({}: Props) {
             color="black"
             className="font-light mb-2 mt-4"
           >
-            موقع الحملة
+            {t("event geo location")}{" "}
           </Typography>
           <div className="google-map rounded-md overflow-hidden h-full w-full ">
             <MyGoogleMaps handleMapClick={handleMapClick} zoom={5}>
@@ -96,16 +104,16 @@ export default function newEvent({}: Props) {
               <label
                 htmlFor="placeImage"
                 className="flex w-full items-center"
-                dir="rtl"
+                dir={i18n.language === "en" ? "ltr" : "rtl"}
               >
                 <div className="h-full p-6 flex bg-green-300 rounded-full shadow-md cursor-pointer items-center ">
                   <SlPicture className="text-[1.5rem]" />
                 </div>
                 <Typography
                   variant="p"
-                  className={`text-gray-600 font-light mb-2 mt-4 mr-4 ${tajawal.className}`}
+                  className={`text-gray-600 font-light mb-2 mt-4 mr-4 ml-4 ${tajawal.className}`}
                 >
-                  اضف صورة للحملة
+                  {t("event image")}
                 </Typography>
               </label>
             </div>
@@ -124,7 +132,7 @@ export default function newEvent({}: Props) {
           {/* place name */}
           <FormField
             name="placeName"
-            label="مكان الحملة"
+            label={t("event location")}
             error={errors.placeName}
           >
             <Input
@@ -133,17 +141,9 @@ export default function newEvent({}: Props) {
               id="placeName"
               variant="standard"
               color="blue"
-              label="مكان الحملة"
+              label={t("event location")}
               {...register("placeName", {
-                required: "اسم مكان الحملة مطلوب", // Validation error message
-                maxLength: {
-                  value: 20,
-                  message: "اسم مكان الحملة لا يجب ان يتجاوز ال20 حرف",
-                },
-                minLength: {
-                  value: 8,
-                  message: "اسم مكان الحملة يجب ان يكون اكثر من 8 احرف",
-                },
+                required: t("error- please enter the location of the event"),
               })}
             />
           </FormField>
@@ -151,7 +151,7 @@ export default function newEvent({}: Props) {
           {/* campaign date */}
           <FormField
             name="campaignDate"
-            label="تاريخ الحملة"
+            label={t("event date")}
             error={errors.eventDate}
           >
             <Input
@@ -162,15 +162,19 @@ export default function newEvent({}: Props) {
               id="campaignDate"
               variant="standard"
               color="blue"
-              label="تاريخ الحملة"
+              label={t("event date")}
               {...register("eventDate", {
-                required: "الرجاء ادخال تاريخ الحملة",
+                required: t("error- please select the date of the event"),
               })}
             />
           </FormField>
 
           {/* campaign time */}
-          <FormField name="campaignTime" label="وقت الحملة">
+          <FormField
+            name="campaignTime"
+            label={t("event time")}
+            error={errors.eventTime}
+          >
             <Input
               type="time"
               autoComplete="off"
@@ -178,9 +182,9 @@ export default function newEvent({}: Props) {
               id="campaignTime"
               variant="standard"
               color="blue"
-              label="وقت الحملة"
+              label={t("event time")}
               {...register("eventTime", {
-                required: "الرجاء ادخال وقت الحملة",
+                required: t("error- please select the time of the event"),
               })}
             />
           </FormField>
@@ -189,17 +193,17 @@ export default function newEvent({}: Props) {
         {/* additional notes */}
         <FormField
           name="additionalNotes"
-          label="ملاحظات إضافية (اختياري)"
+          label={t("notes")}
           error={errors.notes}
         >
           <Textarea
             variant="standard"
             color="blue"
-            label="اضف الملاحظات هنا..."
+            label={t("notes")}
             className="bg-[#F6F6F6] pt-2"
             id="additionalNotes"
             {...register("notes", {
-              required: "الرجاء كتابة ملاحظاتك",
+              required: t("error- please enter your notes"),
             })}
           />
         </FormField>
@@ -209,9 +213,9 @@ export default function newEvent({}: Props) {
             type="submit"
             size="lg"
             color="amber"
-            className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
+            className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
           >
-            بدء الحملة
+            {t("start")}
           </Button>
         </div>
       </form>

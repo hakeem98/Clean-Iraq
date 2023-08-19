@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography } from "../app/material-tailwind";
 import Image from "./Image";
 import { Tajawal } from "next/font/google";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
@@ -47,6 +48,8 @@ export default function ImageGallery({}: Props) {
     },
   ]);
 
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <div className="gallery bg-[#9DDBAD] mt-[4rem] pb-[4rem]">
@@ -55,7 +58,7 @@ export default function ImageGallery({}: Props) {
           color="dark"
           className={`text-center pt-[3rem] pb-[2rem] ${tajawal.className}`}
         >
-          الصور
+          {t("photos")}
         </Typography>
 
         <div className="galleryList px-[2rem] md:px-[0rem]">
