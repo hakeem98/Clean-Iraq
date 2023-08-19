@@ -5,11 +5,14 @@ import { GoPerson } from "react-icons/go";
 import { PiTrash } from "react-icons/pi";
 import { IoLocationOutline } from "react-icons/io5";
 import { Tajawal } from "next/font/google";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
 
 export default function Stats({}: Props) {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="stats absolute w-full px-[2rem] sm:px-[1rem] md:px-[1.5rem] top-[-36rem] md:top-[-15rem]">
       <AnimateOnView>
@@ -30,7 +33,7 @@ export default function Stats({}: Props) {
               color="white"
               className={`text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] ${tajawal.className}`}
             >
-              متطوع
+              {t("volunteer")}
             </Typography>
           </div>
 
@@ -50,7 +53,7 @@ export default function Stats({}: Props) {
               color="white"
               className={`text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] ${tajawal.className}`}
             >
-              كيس نفايات
+              {t("waste bags-home")}
             </Typography>
           </div>
 
@@ -70,7 +73,7 @@ export default function Stats({}: Props) {
               color="white"
               className={`text-center font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] ${tajawal.className}`}
             >
-              حملة تنظيف
+              {t("cleaning campaign-home")}
             </Typography>
           </div>
         </div>

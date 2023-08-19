@@ -6,52 +6,55 @@ import { Tajawal } from "next/font/google";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 type Props = {};
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
 export default function page({}: Props) {
+  const { t, i18n } = useTranslation();
+
   const [options, setOptions] = useState([
     {
       id: 1,
       label: "cleaning_eq",
-      title: "مواد تنظيف",
+      title: t("option-1"),
     },
     {
       id: 2,
       label: "tools",
-      title: "اجهزه او عدة للتنظيف",
+      title: t("option-2"),
     },
     {
       id: 3,
       label: "trashcans",
-      title: "حاويات واكياس نفايات",
+      title: t("option-3"),
     },
     {
       id: 4,
       label: "clothes",
-      title: "عدة وملابس للسلامه والوقاية",
+      title: t("option-4"),
     },
     {
       id: 5,
       label: "part_transfer",
-      title: "خدمة نقل للمتطوعين والمشاركين",
+      title: t("option-5"),
+    },
+    {
+      id: 6,
+      label: "trash_transfer",
+      title: t("option-6"),
     },
     {
       id: 7,
-      label: "trash_transfer",
-      title: "خدمة نقل للنفايات",
+      label: "finance",
+      title: t("option-7"),
     },
     {
       id: 8,
-      label: "finance",
-      title: "مبلغ مالي",
-    },
-    {
-      id: 9,
       label: "others",
-      title: "أخرى",
+      title: t("option-8"),
     },
   ]);
 
@@ -60,14 +63,16 @@ export default function page({}: Props) {
 
   const schema = yup
     .object({
-      name: yup.string().required("الرجاء ادخال الاسم"),
-      phone_number: yup.string().required("الرجاء ادخال رقم الهاتف"),
-      location: yup.string().required("الرجاء اختيار السكن"),
-      options: yup.array().min(1, "الرجاء الاختيار على الاقل خيار واحد"),
+      name: yup.string().required(t("error- please enter your name")),
+      phone_number: yup
+        .string()
+        .required(t("error- please enter your phone number")),
+      location: yup.string().required(t("error- please enter your address")),
+      options: yup.array().min(1, t("error- select at least one option")),
       others: yup
         .string()
-        .max(100, "الرجاء ادخال رسالتك بحد أقصى 100 حرف")
-        .min(10, "الرجاء ادخال رسالتك على الأقل 10 أحرف"),
+        .max(100, t("error- max message"))
+        .min(10, t("error- min message")),
     })
     .required();
 
@@ -77,13 +82,16 @@ export default function page({}: Props) {
   };
 
   return (
-    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA] dark:bg-black">
+    <div
+      dir={i18n.language === "en" ? "ltr" : "rtl"}
+      className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]"
+    >
       <div
         className={`container  max-w-[640px] px-[1.5rem] sm:mx-auto ${tajawal.className}`}
       >
         <div className="donor__title text-center">
           <h1 className="text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] font-[600]">
-            الرجاء ملىء المعلومات التالية
+            {t("donor-form")}
           </h1>
         </div>
 
@@ -91,12 +99,12 @@ export default function page({}: Props) {
           <form className="w-full dark:bg-black" onSubmit={handleSubmit(onSubmit)}>
             <FormField
               name="options"
-              label="بشنو تحب تتبرع"
+              label={t("What would you like to donate")}
               error={errors.options}
             >
-              <div className=" ">
-                <h1 className="mb-[.8rem] text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem] ">
-                  بشنو تحب تتبرع
+              <div className="">
+                <h1 className="mb-[.8rem] text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem]">
+                  {t("What would you like to donate")}
                 </h1>
                 {options.map((option) => (
                   <div key={option.id}>
@@ -106,7 +114,7 @@ export default function page({}: Props) {
                         id={option.title}
                         value={option.title}
                         {...register("options", {
-                          required: "الرجاء اختيار على الاقل خيار واحد",
+                          required: t("error- select at least one option"),
                         })}
                       />
 
@@ -122,34 +130,39 @@ export default function page({}: Props) {
               </div>
             </FormField>
 
-            <FormField name="others" label="اخرى" error={errors.others}>
+            <FormField
+              name="others"
+              label={t("other tools")}
+              error={errors.others}
+            >
               <Input
                 className="bg-[#F6F6F6] pt-2"
                 id="others"
                 variant="standard"
                 color="blue"
-                label="مواد اخرى..."
+                label={t("other tools")}
                 {...register("others", {
-                  required: "الرجاء توضيح بشنو تحب تتبرع",
+                  required: t("error- explain what you want to donate with"),
                 })}
               />
             </FormField>
-
-            <div className="flex flex-col sm:flex-row gap-x-2  dark:text-white">
-              <FormField name="name" label="الأسم" error={errors.name}>
+            <div className="flex flex-col sm:flex-row gap-x-2">
+              <FormField name="name" label={t("the name")} error={errors.name}>
                 <Input
                   className="bg-[#F6F6F6] pt-2 dark:text-white"
                   id="name"
                   variant="standard"
                   color="blue"
-                  label="الأسم"
-                  {...register("name", { required: "الرجاء ادخال الاسم" })}
+                  label={t("the name")}
+                  {...register("name", {
+                    required: t("error- please enter your name"),
+                  })}
                 />
               </FormField>
 
               <FormField
                 name="phoneNumber"
-                label="رقم الهاتف"
+                label={t("phone number")}
                 error={errors.phone_number}
               >
                 <Input
@@ -158,35 +171,38 @@ export default function page({}: Props) {
                   id="phoneNumber"
                   variant="standard"
                   color="blue"
-                  label="رقم الهاتف"
+                  label={t("phone number")}
                   {...register("phone_number", {
-                    required: "الرجاء ادخال رقم الهاتف",
+                    required: t("error- please enter your phone number"),
                   })}
                 />
               </FormField>
             </div>
 
-            <FormField name="location" label="السكن" error={errors.location}>
+            <FormField
+              name="location"
+              label={t("living")}
+              error={errors.location}
+            >
               <Input
                 className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="location"
                 variant="standard"
                 color="blue"
-                label="السكن"
+                label={t("living")}
                 {...register("location", {
-                  required: "الرجاء ادخال السكن",
+                  required: t("error- please enter your address"),
                 })}
               />
             </FormField>
 
             <div className="btn">
-              <button className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] text-[#000] hover:bg-opacity-90 transition">
-                شارك
+              <button className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] text-[#000] hover:bg-opacity-90 transition">
+                {t("join")}
               </button>
             </div>
-            <p className="note text-[#595959] mt-2  dark:text-white">
-              بعد الضفط على الزر اعلاه سيتواصل معك الفريق خلال مده قصيرة ليتم
-              تأكيد واكمال عملية التبرع
+            <p className="note text-[#595959] mt-2 ">
+              {t("after click donat button")}
             </p>
           </form>
         </div>

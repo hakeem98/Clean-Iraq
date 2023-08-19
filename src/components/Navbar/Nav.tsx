@@ -8,10 +8,13 @@ import {
   Button,
   IconButton,
 } from "../../app/material-tailwind";
-import Theme from "../theme/theme";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useTranslation } from "react-i18next";
+
 
 const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     window.addEventListener(
@@ -19,12 +22,8 @@ const Nav = () => {
       () => window.innerWidth >= 1100 && setOpenNav(false)
     );
   }, []);
-
   const navList = (
-    <ul
-      className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
-      dir="rtl"
-    >
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
         variant="small"
@@ -32,7 +31,7 @@ const Nav = () => {
         className="p-1 font-normal"
       >
         <Link href="/" className="flex items-center font-bold">
-          الرئيسية
+          {t("home-nav")}
         </Link>
       </Typography>
 
@@ -43,7 +42,7 @@ const Nav = () => {
         className="p-1 font-normal"
       >
         <Link href="/events" className="flex items-center font-bold">
-          الحملات
+          {t("events-nav")}
         </Link>
       </Typography>
       <Typography
@@ -54,7 +53,7 @@ const Nav = () => {
       >
         <Link href="/blogs" className="flex items-center font-bold">
           {" "}
-          مجتمعنا
+          {t("our community-nav")}
         </Link>
       </Typography>
       <Typography
@@ -65,7 +64,7 @@ const Nav = () => {
       >
         <Link href="/contact" className="flex items-center font-bold">
           {" "}
-          تواصل معنا
+          {t("contact us-nav")}
         </Link>
       </Typography>
       <Typography
@@ -76,7 +75,7 @@ const Nav = () => {
       >
         <Link href="/about" className="flex items-center font-bold">
           {" "}
-          من نحن؟
+          {t("about us-nav")}
         </Link>
       </Typography>
       <Typography
@@ -87,7 +86,7 @@ const Nav = () => {
       >
         <Link href="/events/new" className="flex items-center font-bold">
           {" "}
-          حملة جديدة (للأدمن فقط)
+          {t("add event")}
         </Link>
       </Typography>
     </ul>
@@ -110,18 +109,22 @@ const Nav = () => {
                 alt="سفراء النظافة"
               />
             </Typography>
+
             <div className="flex items-center gap-4">
-              <div className="mr-4 hidden xl:block">{navList}</div>
-              <Link href={"/join"}>
+              <div className="mr-4 hidden xl:block" dir="rtl">
+                {navList}
+              </div>
+              <Link href={"/join"} className="hidden xl:block">
                 <Button
                   size="lg"
                   color="amber"
-                  className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] font-light hidden lg:inline-block"
+                  className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] font-light hidden lg:inline-block"
                   onClick={() => setOpenNav(false)}
                 >
-                  انضمام
+                  {t("join")}
                 </Button>
               </Link>
+              <LanguageSwitcher />
               <IconButton
                 variant="text"
                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent xl:hidden"
@@ -162,15 +165,15 @@ const Nav = () => {
             </div>
           </div>
           <MobileNav open={openNav} className="m-0 p-0 px-4">
-            {navList}
+            <div dir={i18n.language === "en" ? "ltr" : "rtl"}>{navList}</div>
             <Link href={"/join"}>
               <Button
                 size="lg"
                 color="amber"
-                className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light w-full"
+                className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light w-full"
                 onClick={() => setOpenNav(false)}
               >
-                انضمام
+                {t("join")}
               </Button>
             </Link>
           </MobileNav>

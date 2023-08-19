@@ -2,8 +2,8 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
 import { Tajawal } from "next/font/google";
-
-const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"]  });
+import { useTranslation } from "react-i18next";
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
 
 interface Image {
@@ -44,6 +44,7 @@ const instagramIcon = (
 );
 
 export default function about({}: Props) {
+  const { t, i18n } = useTranslation();
   const orgzData: Image[] = [
     {
       id: 1,
@@ -67,70 +68,75 @@ export default function about({}: Props) {
     <div className="aboutPage">
       <div
         className="aboutHero relative bg-[url(/assets/5.jpg)] w-full h-[60vh] bg-cover bg-bottom"
-        dir="rtl"
+        dir={i18n.language === "en" ? "ltr" : "rtl"}
       >
         <div className="to-bg-black-10 z-[1] absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/25" />
 
         <div className="heroContent pt-[10rem] text-center md:text-start z-[10] px-[2rem] md:max-w-[800px] md:pt-[15rem]">
           <Typography className="text-2xl md:text-3xl font-600 text-white">
-            بدأت الفكرة مع صديقنا مرتضى التميمي الذي قرر تنظيف نهر دجلة
-            للاستمتاع بغروب الشمس.
+            {t("about-hero")}
           </Typography>
 
           <Typography className="text-md md:text-xl text-white">
-            بعد دعم فريق المحاربين وحملة التشجير، تطورت المبادرة لتصبح حملة
-            #سفراء_النظافة.
+            {t("about-hero2")}
           </Typography>
         </div>
       </div>
 
       <div className="about mb-[8rem] container sm:mx-auto mt-[6rem] ml-0 ">
-        <div className="post flex flex-col lg:mx-[8rem] md:flex-row px-[1rem] mt-[2rem]">
+        <div
+          dir={i18n.language === "en" ? "rtl" : "ltr"}
+          className="post flex flex-col lg:mx-[8rem] md:flex-row px-[1rem] mt-[2rem]"
+        >
           <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">
-            <div className="w-full h-full pl-0 pr-[12rem] py-[2rem]">
+            <div
+              className={`w-full h-full pl-0 ${
+                i18n.language === "en" ? "pl-[12rem]" : "pr-[12rem]"
+              } py-[2rem]`}
+            >
               <div className="bg-[url('/assets/1.png')] w-full shadow-[10px_10px_0px_0px_#9DDBAD] transition hover:shadow-[0px_0px_0px_0px_#9DDBAD] rounded-md h-full bg-cover bg-center"></div>
             </div>
           </div>
 
           <div
-            className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
-            dir="rtl"
+            className={`aboutContent flex justify-center items-start flex-col ${
+              i18n.language === "en" ? "pr-0 sm:pr-4" : "pl-0 sm:pl-4"
+            }`}
+            dir={i18n.language === "en" ? "ltr" : "rtl"}
           >
-            <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center dark:text-white">
-              من هم سفراء النظافة؟
+            <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2">
+              {t("about-post content")}
+
             </h2>
-            <p>
-              هذه الحملة تهمنا جميعًا. نحن جميعًا سفراء النظافة، نلتزم بما يلي:
-            </p>
+            <p>{t("about-p")}</p>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <p>عدم التخلّص من النفايات في الأماكن العامة</p>
+                <p>{t("about-list-1")}</p>
               </li>
               <li>
-                <p>مساعدة الآخرين في التخلّص من النفايات</p>
+                <p>{t("about-list-2")}</p>
               </li>
               <li>
-                <p>المشاركة في تنظيف الأماكن العامة</p>
+                <p>{t("about-list-3")}</p>
               </li>
             </ul>{" "}
             <br></br>
             <div
               className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
-              dir="rtl"
+              dir={i18n.language === "en" ? "ltr" : "rtl"}
             >
-              <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center dark:text-white">
-                رسالتنا
+              <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center">
+                {t("about-message")}
               </h2>
 
-              <p>
-                كلنا نكدر نصنع تغيير ايجابي ولازم نتعاون ونسعى من اجل عراق انظف
-                واجمل
-              </p>
+              <p>{t("message-1")}</p>
 
               <p>
-                الخطوة القادمة:<br></br>
-                فريقنا مستمر بتوسيع المشروع وتنظيم فعاليات تخلي يوم الحملة فرحة
-                واحتفال كبير بالنظافة والانجازات الي يحققوها سفراء النظافة،
+                <span className="font-bold text-[1.2rem]">
+                  {t("next step")}
+                </span>
+                :<br></br>
+                {t("about-p2")}
               </p>
             </div>
           </div>
@@ -143,14 +149,14 @@ export default function about({}: Props) {
           color="dark"
           className={`text-center ${tajawal.className}`}
         >
-          المنظمين
+          {t("organizers")}
         </Typography>
         <div className="list grid grid-cols-1 md:grid-cols-2 gap-x-10">
           {orgzData.map((item) => (
             <div
               key={item.id}
-              className="w-full rounded-md overflow-hidden shadow-md bg-white my-8 dark:bg-black dark:text-white"
-              dir="rtl"
+              className="w-full rounded-md overflow-hidden shadow-md bg-white my-8"
+              dir={i18n.language === "en" ? "ltr" : "rtl"}
             >
               <div className="imgContainer h-[23rem] w-full">
                 <div className="img w-full h-full">
@@ -169,14 +175,14 @@ export default function about({}: Props) {
                       color="blue-gray"
                       className={`font-medium ${tajawal.className}`}
                     >
-                      اسم المنظم
+                      {t("organizer name")}
                     </Typography>
                     <Typography
                       variant="h5"
                       color="gray"
                       className={`text-xs font-normal ${tajawal.className}`}
                     >
-                      الوظيفة
+                      {t("organizer position")}
                     </Typography>
                   </div>
                 </div>
@@ -185,11 +191,7 @@ export default function about({}: Props) {
                     variant="small"
                     className={`font-light my-8 ${tajawal.className}`}
                   >
-                    وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج
-                    أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار
-                    ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير
-                    سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو
-                    كونسيكيوات
+                    {t("lorem")}
                   </Typography>
                 </div>
               </div>

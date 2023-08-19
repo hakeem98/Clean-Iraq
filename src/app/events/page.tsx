@@ -23,8 +23,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import AnimateOnView from "@/components/AnimateOnView";
+import { useTranslation } from "react-i18next";
 
 export default function events() {
+  const { t, i18n } = useTranslation();
   const [markers, setMarkers] = useState([
     {
       lat: 33.296947,
@@ -76,9 +78,9 @@ export default function events() {
   return (
     <div className="pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto">
       {/* map and location */}
-      <div className="" dir="rtl">
-        <Typography variant="h2" color="black" className="mb-2 dark:text-white">
-          الحملات الجاية
+      <div className="" dir={i18n.language === "en" ? "ltr" : "rtl"}>
+        <Typography variant="h2" color="black" className="mb-2">
+          {t("upcoming events")}
         </Typography>
 
         <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
@@ -107,26 +109,28 @@ export default function events() {
                   <div className="icon mx-2">
                     <GoLocation className="text-[2rem] text-white" />
                   </div>
+
                   <Typography variant="h5" className="text-gray-100">
                     بغداد / ابو نؤاس مقابل مطعم ورق عنب
                   </Typography>
                 </div>
+
                 <div className="time flex items-center">
                   <div className="icon mx-2">
                     <AiOutlineClockCircle className="text-[2rem] text-white" />
                   </div>
-                  <Typography variant="h5" className="text-gray-100">
-                    11:00 صباحاً
+
+                  <Typography dir="ltr" variant="h5" className="text-gray-100">
+                    11:00 am
                   </Typography>
                 </div>
               </div>
               <Button size="lg" color="amber" className="w-full font-light">
-                شارك
+                {t("join")}
               </Button>
             </div>
           </EventCard>
         </Link>
-
         <Link href={"/join"}>
           <EventCard>
             <div className="mt-[4rem] children">
@@ -135,26 +139,28 @@ export default function events() {
                   <div className="icon mx-2">
                     <GoLocation className="text-[2rem] text-white" />
                   </div>
+
                   <Typography variant="h5" className="text-gray-100">
                     بغداد / ابو نؤاس مقابل مطعم ورق عنب
                   </Typography>
                 </div>
+
                 <div className="time flex items-center">
                   <div className="icon mx-2">
                     <AiOutlineClockCircle className="text-[2rem] text-white" />
                   </div>
-                  <Typography variant="h5" className="text-gray-100">
-                    11:00 صباحاً
+
+                  <Typography dir="ltr" variant="h5" className="text-gray-100">
+                    11:00 am
                   </Typography>
                 </div>
               </div>
               <Button size="lg" color="amber" className="w-full font-light">
-                شارك
+                {t("join")}
               </Button>
             </div>
           </EventCard>
         </Link>
-
         <Link href={"/join"}>
           <EventCard>
             <div className="mt-[4rem] children">
@@ -163,21 +169,24 @@ export default function events() {
                   <div className="icon mx-2">
                     <GoLocation className="text-[2rem] text-white" />
                   </div>
+
                   <Typography variant="h5" className="text-gray-100">
                     بغداد / ابو نؤاس مقابل مطعم ورق عنب
                   </Typography>
                 </div>
+
                 <div className="time flex items-center">
                   <div className="icon mx-2">
                     <AiOutlineClockCircle className="text-[2rem] text-white" />
                   </div>
-                  <Typography variant="h5" className="text-gray-100">
-                    11:00 صباحاً
+
+                  <Typography dir="ltr" variant="h5" className="text-gray-100">
+                    11:00 am
                   </Typography>
                 </div>
               </div>
               <Button size="lg" color="amber" className="w-full font-light">
-                شارك
+                {t("join")}
               </Button>
             </div>
           </EventCard>
@@ -185,35 +194,38 @@ export default function events() {
       </div>
 
       {/* suggestions form */}
-      <div dir="rtl" className="mt-[4rem] max-w-[800px] mx-auto">
+      <div
+        dir={i18n.language === "en" ? "ltr" : "rtl"}
+        className="mt-[4rem] max-w-[800px] mx-auto"
+      >
         <Typography
           variant="h2"
           color="black"
           className="mb-2 text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] dark:text-white"
         >
-          عندك اقتراحات للحملة الجاية؟
+          {t("suggestions")}
         </Typography>
         <AnimateOnView>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <FormField name="name" label="الأسم" error={errors.name}>
+            <FormField name="name" label={t("the name")} error={errors.name}>
               <Input
                 className="bg-[#F6F6F6] pt-2"
                 id="name"
                 {...register("name")}
                 variant="standard"
                 color="blue"
-                label="الأسم"
+                label={t("the name")}
               />
             </FormField>
             <FormField
               name="suggestion"
-              label="شنو هو اقتراحك"
+              label={t("what is u sg")}
               error={errors.suggestion}
             >
               <Textarea
                 variant="standard"
                 color="blue"
-                label="اكتب اقتراحك هنا..."
+                label={t("what is u sg")}
                 className="bg-[#F6F6F6] pt-2"
                 id="suggestion"
                 {...register("suggestion")}
@@ -227,7 +239,7 @@ export default function events() {
                 color="amber"
                 className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
               >
-                إرسال
+                {t("send")}
               </Button>
             </div>
           </form>
@@ -235,8 +247,8 @@ export default function events() {
       </div>
 
       <div className="mt-[4rem]" dir="rtl">
-        <Typography variant="h2" color="black" className="mb-2 dark:text-white">
-          الحملات السابقة
+        <Typography variant="h2" color="black" className="mb-2">
+          {t("past events")}
         </Typography>
 
         <AnimateOnView>
@@ -262,13 +274,16 @@ export default function events() {
         <div className="events-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <EventCard>
             <div className="mt-[4rem] children">
-              <div className="flex flex-col my-4">
+              <div
+                dir={i18n.language === "en" ? "ltr" : "rtl"}
+                className="flex flex-col my-4"
+              >
                 <div className="location mb-2 flex items-center py-2">
                   <div className="icon mx-2">
                     <GiPathDistance className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    تم تنظيف اكثر من 15km
+                    {t("cleaned distance")}
                   </Typography>
                 </div>
                 <div className="garbage flex items-center py-2">
@@ -276,7 +291,7 @@ export default function events() {
                     <PiTrash className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    10000 كيس نفايات
+                    10000 {t("waste bags-home")}
                   </Typography>
                 </div>
                 <div className="garbage flex items-center py-2">
@@ -284,7 +299,7 @@ export default function events() {
                     <GoPerson className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    بمساعدة اكثر من 500 متطوع
+                    {t("with help of")}
                   </Typography>
                 </div>
               </div>
@@ -293,13 +308,16 @@ export default function events() {
 
           <EventCard>
             <div className="mt-[4rem] children">
-              <div className="flex flex-col my-4">
+              <div
+                dir={i18n.language === "en" ? "ltr" : "rtl"}
+                className="flex flex-col my-4"
+              >
                 <div className="location mb-2 flex items-center py-2">
                   <div className="icon mx-2">
                     <GiPathDistance className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    تم تنظيف اكثر من 15km
+                    {t("cleaned distance")}
                   </Typography>
                 </div>
                 <div className="garbage flex items-center py-2">
@@ -307,7 +325,7 @@ export default function events() {
                     <PiTrash className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    10000 كيس نفايات
+                    10000 {t("waste bags-home")}
                   </Typography>
                 </div>
                 <div className="garbage flex items-center py-2">
@@ -315,7 +333,7 @@ export default function events() {
                     <GoPerson className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    بمساعدة اكثر من 500 متطوع
+                    {t("with help of")}
                   </Typography>
                 </div>
               </div>
@@ -324,13 +342,16 @@ export default function events() {
 
           <EventCard>
             <div className="mt-[4rem] children">
-              <div className="flex flex-col my-4">
+              <div
+                dir={i18n.language === "en" ? "ltr" : "rtl"}
+                className="flex flex-col my-4"
+              >
                 <div className="location mb-2 flex items-center py-2">
                   <div className="icon mx-2">
                     <GiPathDistance className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    تم تنظيف اكثر من 15km
+                    {t("cleaned distance")}
                   </Typography>
                 </div>
                 <div className="garbage flex items-center py-2">
@@ -338,7 +359,7 @@ export default function events() {
                     <PiTrash className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    10000 كيس نفايات
+                    10000 {t("waste bags-home")}
                   </Typography>
                 </div>
                 <div className="garbage flex items-center py-2">
@@ -346,7 +367,7 @@ export default function events() {
                     <GoPerson className="text-[2rem] text-white" />
                   </div>
                   <Typography variant="h5" className="text-gray-100">
-                    بمساعدة اكثر من 500 متطوع
+                    {t("with help of")}
                   </Typography>
                 </div>
               </div>
@@ -361,7 +382,7 @@ export default function events() {
           color="dark"
           className="relative after:z-[-1] after:rounded-lg after:absolute after:w-[108%] after:bottom-0  after:left-[-4px] after:h-full after:transition after:translate-y-5 after:hover:translate-y-0 px-2 overflow-hidden after:duration-[.4s] after:bg-green-200 cursor-pointer"
         >
-          رؤية المزيد
+          {t("see more")}
         </Typography>
       </div>
     </div>

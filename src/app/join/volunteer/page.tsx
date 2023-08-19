@@ -6,6 +6,7 @@ import { Tajawal } from "next/font/google";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
@@ -13,20 +14,23 @@ type Props = {};
 export default function page({}: Props) {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
+  const { t, i18n } = useTranslation();
 
   const schema = yup
     .object({
-      name: yup.string().required("الرجاء ادخال الاسم"),
-      phone_number: yup.string().required("الرجاء ادخال رقم الهاتف"),
-      location: yup.string().required("الرجاء اختيار السكن"),
-      age: yup.string().required("الرجاء ادخال العمر"),
-      gender: yup.string().required("الرجاء اختيار الجنس"),
-      hobby: yup.string().required("الرجاء اختيار الوظيفة"),
-      history: yup.string().required("الرجاء اختيار نعم او لا"),
+      name: yup.string().required(t("error- please enter your name")),
+      phone_number: yup
+        .string()
+        .required(t("error- please enter your phone number")),
+      location: yup.string().required(t("error- please enter your address")),
+      age: yup.string().required(t("error- please enter your age")),
+      gender: yup.string().required(t("error- please select your gender")),
+      hobby: yup.string().required(t("error- please select your job")),
+      history: yup.string().required(t("error- please select yes or no")),
       message: yup
         .string()
-        .max(100, "الرجاء ادخال رسالتك بحد أقصى 100 حرف")
-        .min(10, "الرجاء ادخال رسالتك على الأقل 10 أحرف"),
+        .max(100, t("error- max message"))
+        .min(10, t("error- min message")),
     })
     .required();
 
@@ -43,32 +47,32 @@ export default function page({}: Props) {
       >
         <div className="donor__title text-center ">
           <h1 className="text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] font-[600]">
-            الرجاء ملىء المعلومات التالية
+            {t("volunteer-form")}
           </h1>
         </div>
 
-        <div className="">
+        <div className="" dir={i18n.language === "en" ? "ltr" : "rtl"}>
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <h3 className="mt-4 text-[1.1rem] sm:text-[1.3rem]">
-              نشكرك على اهتمامك, حتى تكون جزء من التغيير راجاءاً قم بملىء
-              المعلومات التالية
+              {t("volunteer-form-p")}
             </h3>
-
-            <div className="flex flex-col sm:flex-row gap-x-2 ">
-              <FormField  name="name" label="الأسم" error={errors.name}  >
+            <div className="flex flex-col sm:flex-row gap-x-2">
+              <FormField name="name" label={t("the name")} error={errors.name}>
                 <Input
                   className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="name"
                   variant="standard"
                   color="blue"
-                  label="الأسم"
-                  {...register("name", { required: "الرجاء ادخال الاسم" })}
+                  label={t("the name")}
+                  {...register("name", {
+                    required: t("error- please enter your name"),
+                  })}
                 />
               </FormField>
 
               <FormField
                 name="phoneNumber"
-                label="رقم الهاتف"
+                label={t("phone number")}
                 error={errors.phone_number}
               >
                 <Input
@@ -76,57 +80,61 @@ export default function page({}: Props) {
                   id="phoneNumber"
                   variant="standard"
                   color="blue"
-                  label="رقم الهاتف"
+                  label={t("phone number")}
                   {...register("phone_number", {
-                    required: "الرجاء ادخال رقم الهاتف",
+                    required: t("error- please enter your phone number"),
                   })}
                 />
               </FormField>
             </div>
 
-            <FormField name="age" label="العمر" error={errors.age}>
+            <FormField name="age" label={t("the age")} error={errors.age}>
               <Input
                 className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="age"
                 variant="standard"
                 color="blue"
-                label="العمر"
+                label={t("the age")}
                 {...register("age", {
-                  required: "الرجاء ادخال العمر",
+                  required: t("error- please enter your age"),
                 })}
               />
             </FormField>
 
-            <FormField name="location" label="السكن" error={errors.location}>
+            <FormField
+              name="location"
+              label={t("living")}
+              error={errors.location}
+            >
               <Input
                 className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="location"
                 variant="standard"
                 color="blue"
-                label="السكن"
+                label={t("living")}
                 {...register("location", {
-                  required: "الرجاء ادخال السكن",
+                  required: t("error- please enter your address"),
                 })}
               />
             </FormField>
 
-            <FormField name="gender" label="الجنس" error={errors.gender}>
+            <FormField name="gender" label={t("gender")} error={errors.gender}>
               <label className="" htmlFor="sex">
-                الجنس
+                {t("gender")}
               </label>
               <div className="flex flex-col gap-2">
                 <Radio
-                  label="ذكر"
+                  label={t("male")}
                   value={"male"}
                   {...register("gender", {
-                    required: "الرجاء اختيار الجنس",
+                    required: t("error- please select your gender"),
                   })}
                 />
                 <Radio
+                  label={t("female")}
                   value={"female"}
-                  label="انثى"
                   {...register("gender", {
-                    required: "الرجاء اختيار الجنس",
+                    required: t("error- please select your gender"),
                   })}
                 />
               </div>
@@ -134,28 +142,28 @@ export default function page({}: Props) {
 
             <FormField name="hobby" label="الوظيفة" error={errors.hobby}>
               <label className="" htmlFor="job">
-                هل انت/ي
+                {t("are you")}
               </label>
               <div className="flex flex-col gap-2">
                 <Radio
                   value={"student"}
-                  label="طالب/ة"
+                  label={t("student")}
                   {...register("hobby", {
-                    required: "الرجاء اختيار الوظيفة",
+                    required: t("error- please select your job"),
                   })}
                 />
                 <Radio
                   value={"employee"}
-                  label="موظف/ة"
+                  label={t("employee")}
                   {...register("hobby", {
-                    required: "الرجاء اختيار الوظيفة",
+                    required: t("error- please select your job"),
                   })}
                 />
                 <Radio
                   value={"not_employee"}
-                  label="لا اعمل"
+                  label={t("do not work")}
                   {...register("hobby", {
-                    required: "الرجاء اختيار الوظيفة",
+                    required: t("error- please select your job"),
                   })}
                 />
               </div>
@@ -163,25 +171,25 @@ export default function page({}: Props) {
 
             <FormField
               name="history"
-              label="هل شاركت في حملات سابقة"
+              label={t("Have you participated in previous volunteer campaigns")}
               error={errors.history}
             >
               <label className="" htmlFor="history">
-                هل شاركت في حملات تطوعية سابقة
+                {t("Have you participated in previous volunteer campaigns")}
               </label>
               <div className="flex flex-col gap-2">
                 <Radio
                   value={"yes"}
-                  label="نعم"
+                  label={t("yes")}
                   {...register("history", {
-                    required: "الرجاء اختيار نعم او لا",
+                    required: t("error- please select yes or no"),
                   })}
                 />
                 <Radio
                   value={"no"}
-                  label="لا"
+                  label={t("no")}
                   {...register("history", {
-                    required: "الرجاء اختيار نعم او لا",
+                    required: t("error- please select yes or no"),
                   })}
                 />
               </div>
@@ -189,17 +197,17 @@ export default function page({}: Props) {
 
             <FormField
               name="message"
-              label="هل لديك اي تعليق"
+              label={t("Do you have any comment")}
               error={errors.message}
             >
               <Textarea
                 variant="standard"
                 color="blue"
-                label="هل لديك اي تعليق"
-                className="bg-[#F6F6F6] pt-2  dark:text-white"
+                label={t("Do you have any comment")}
+                className="bg-[#F6F6F6] pt-2"
                 id="message"
                 {...register("message", {
-                  required: "الرجاء كتابة تعليقك",
+                  required: t("error- please enter you comment"),
                 })}
               />
             </FormField>
@@ -207,14 +215,13 @@ export default function page({}: Props) {
             <div className="btn">
               <button
                 type="submit"
-                className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] text-[#000] hover:bg-opacity-90 transition"
+                className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] text-[#000] hover:bg-opacity-90 transition"
               >
-                شارك
+                {t("join")}
               </button>
             </div>
-            <p className="note text-[#595959] mt-2   dark:text-white ">
-              بعد الضفط على الزر اعلاه سيتواصل معك الفريق خلال مده قصيرة ليتم
-              تأكيد طلبك للمشاركة في الحملة
+            <p className="note text-[#595959] mt-2 ">
+              {t("after click button")}
             </p>
           </form>
         </div>

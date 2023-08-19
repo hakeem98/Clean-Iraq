@@ -20,8 +20,10 @@ import {
 } from "@material-tailwind/react";
 import "boxicons";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function BlogPost({ post }: any) {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen((cur) => !cur);
@@ -72,13 +74,8 @@ export default function BlogPost({ post }: any) {
             />
           </Carousel>
           <br />
-          <Typography>
-            وريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل
-            وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم
-            إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت
-            مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن
-            كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم
-            تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة
+          <Typography dir={i18n.language === "en" ? "ltr" : "rtl"}>
+            {t("lorem")}
           </Typography>
         </CardBody>
         <CardFooter className="flex-column items-center py-4 py-1 bg-gray-100 rounded-lg p-3 mx-0 my-3">
@@ -98,7 +95,7 @@ export default function BlogPost({ post }: any) {
           <div className="col-start-2 row-start-1 flex justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2">
             {" "}
             <Typography variant="h1" className="">
-              لا توجد تعليقات
+              {t("no comments")}
             </Typography>
           </div>
           <div className="col-start-1 row-start-1 mx-2">
@@ -138,15 +135,7 @@ export default function BlogPost({ post }: any) {
                 />
               </Carousel>
               <br />
-              <Typography>
-                وريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي
-                الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان
-                لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
-                عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها
-                من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة
-                قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً
-                وبشكله الأصلي في الطباعة
-              </Typography>
+              <Typography>{t("lorem")}</Typography>
             </CardBody>
           </div>
         </DialogBody>
