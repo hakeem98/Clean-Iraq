@@ -53,7 +53,7 @@ const Contact = () => {
       >
         <FormField name="name" label={t("the name")} error={errors.name}>
           <Input
-            className="bg-[#F6F6F6] pt-2"
+            className="bg-[#F6F6F6] pt-2  dark:text-white"
             id="name"
             variant="standard"
             color="blue"
@@ -65,7 +65,7 @@ const Contact = () => {
         </FormField>
         <FormField name="email" label={t("email")} error={errors.email}>
           <Input
-            className="bg-[#F6F6F6] pt-2"
+            className="bg-[#F6F6F6] pt-2  dark:text-white"
             variant="standard"
             color="blue"
             label={t("email")}

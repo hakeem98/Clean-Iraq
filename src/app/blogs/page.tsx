@@ -38,7 +38,7 @@ export default function Blog() {
       className=" container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto flex-column justify-center items-center  "
       dir="rtl"
     >
-      <div className="mx-16">
+      <div className="mx-16 ">
         <AddPost />
       </div>
       <div className="flex max-w-full flex-wrap justify-center ">

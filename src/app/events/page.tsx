@@ -201,7 +201,7 @@ export default function events() {
         <Typography
           variant="h2"
           color="black"
-          className="mb-2 text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem]"
+          className="mb-2 text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] dark:text-white"
         >
           {t("suggestions")}
         </Typography>

@@ -41,11 +41,11 @@ export default function page({}: Props) {
   };
 
   return (
-    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]">
+    <div dir="rtl" className="pt-[8rem] pb-[8rem] bg-[#F6FFFA] dark:bg-black  ">
       <div
         className={`container  max-w-[640px] px-[1.5rem] sm:mx-auto ${tajawal.className}`}
       >
-        <div className="donor__title text-center">
+        <div className="donor__title text-center ">
           <h1 className="text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] font-[600]">
             {t("volunteer-form")}
           </h1>
@@ -56,11 +56,10 @@ export default function page({}: Props) {
             <h3 className="mt-4 text-[1.1rem] sm:text-[1.3rem]">
               {t("volunteer-form-p")}
             </h3>
-
             <div className="flex flex-col sm:flex-row gap-x-2">
               <FormField name="name" label={t("the name")} error={errors.name}>
                 <Input
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="name"
                   variant="standard"
                   color="blue"
@@ -77,7 +76,7 @@ export default function page({}: Props) {
                 error={errors.phone_number}
               >
                 <Input
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="phoneNumber"
                   variant="standard"
                   color="blue"
@@ -91,7 +90,7 @@ export default function page({}: Props) {
 
             <FormField name="age" label={t("the age")} error={errors.age}>
               <Input
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="age"
                 variant="standard"
                 color="blue"
@@ -108,7 +107,7 @@ export default function page({}: Props) {
               error={errors.location}
             >
               <Input
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="location"
                 variant="standard"
                 color="blue"

@@ -79,7 +79,7 @@ export default function newEvent({}: Props) {
           <Typography
             variant="h4"
             color="black"
-            className="font-light mb-2 mt-4"
+            className="font-light mb-2 mt-4  dark:text-white "
           >
             {t("event geo location")}{" "}
           </Typography>
@@ -96,7 +96,7 @@ export default function newEvent({}: Props) {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className="mx-auto ">
         {/* place picture */}
         <FormField name="placeImage" label="صورة المكان">
           <div className="flex justify-start items-start">

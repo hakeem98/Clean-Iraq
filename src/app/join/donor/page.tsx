@@ -95,8 +95,8 @@ export default function page({}: Props) {
           </h1>
         </div>
 
-        <div className="">
-          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+        <div className=" dark:bg-black">
+          <form className="w-full dark:bg-black" onSubmit={handleSubmit(onSubmit)}>
             <FormField
               name="options"
               label={t("What would you like to donate")}
@@ -146,11 +146,10 @@ export default function page({}: Props) {
                 })}
               />
             </FormField>
-
             <div className="flex flex-col sm:flex-row gap-x-2">
               <FormField name="name" label={t("the name")} error={errors.name}>
                 <Input
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2 dark:text-white"
                   id="name"
                   variant="standard"
                   color="blue"
@@ -168,7 +167,7 @@ export default function page({}: Props) {
               >
                 <Input
                   type="tel"
-                  className="bg-[#F6F6F6] pt-2"
+                  className="bg-[#F6F6F6] pt-2  dark:text-white"
                   id="phoneNumber"
                   variant="standard"
                   color="blue"
@@ -186,7 +185,7 @@ export default function page({}: Props) {
               error={errors.location}
             >
               <Input
-                className="bg-[#F6F6F6] pt-2"
+                className="bg-[#F6F6F6] pt-2  dark:text-white"
                 id="location"
                 variant="standard"
                 color="blue"

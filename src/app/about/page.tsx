@@ -2,7 +2,6 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
 import { Tajawal } from "next/font/google";
-
 import { useTranslation } from "react-i18next";
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
@@ -107,6 +106,7 @@ export default function about({}: Props) {
           >
             <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2">
               {t("about-post content")}
+
             </h2>
             <p>{t("about-p")}</p>
             <ul className="list-disc space-y-2 pl-6">
@@ -167,9 +167,9 @@ export default function about({}: Props) {
                   />
                 </div>
               </div>
-              <div className=" px-6 py-4">
-                <div className="flex flex-col gap-3 pt-4 ">
-                  <div className="-mt-px flex flex-col">
+              <div className=" px-6 py-4  dark:text-white">
+                <div className="flex flex-col gap-3 pt-4  dark:text-white">
+                  <div className="-mt-px flex flex-col dark:text-white ">
                     <Typography
                       variant="h4"
                       color="blue-gray"
