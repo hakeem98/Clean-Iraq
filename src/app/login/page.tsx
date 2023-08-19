@@ -1,10 +1,38 @@
 "use client";
-
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-
+interface FormType {
+  email: string;
+  password: string;
+}
 export default function login() {
+  const schema = yup
+    .object({
+      email: yup
+        .string()
+        .email("الرجاء ادخال بريد الكتروني صحيح 'example@email.com'")
+        .required(" الرجاء ادخال البريد الالكتروني"),
+      password: yup
+        .string()
+        .max(100, "الرجاء ادخال رسالتك بحد أقصى 100 حرف")
+        .min(8, "الرجاء ادخال كلمة سر تحتوي على الاقل ٨ عناصر")
+        .required("كلمة السر مطلوبة"),
+    })
+    .required();
+
+  const { register, handleSubmit, reset, formState } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const { errors } = formState;
+
+  const onSubmit: SubmitHandler<FormType> = async (data) => {
+    console.log("hi");
+    reset();
+  };
   return (
-    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8 h-[90vh] pt-20">
       <div
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
         aria-hidden="true"
@@ -41,11 +69,16 @@ export default function login() {
             <div className="mt-2.5">
               <input
                 type="email"
-                name="email"
+                {...register("email", {
+                  required: "الرجاء ادخال البريد الألكتروني",
+                })}
                 id="email"
                 autoComplete="email"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
+              {errors.email && (
+                <span className="text-red-500">{errors.email.message}</span>
+              )}
             </div>
           </div>
           <div className="sm:col-span-2">
@@ -53,22 +86,28 @@ export default function login() {
               htmlFor="password"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              كلمة السر{" "}
+              كلمة السر
             </label>
             <div className="mt-2.5">
               <input
                 type="password"
-                name="password"
+                {...register("password", {
+                  required: "الرجاء ادخال البريد الألكتروني",
+                })}
                 id="password"
                 autoComplete="password"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
+              {errors.password && (
+                <span className="text-red-500">{errors.password.message}</span>
+              )}
             </div>
           </div>
         </div>
 
         <button
           type="submit"
+          onClick={handleSubmit(onSubmit)}
           className="mt-5 block w-full rounded-md bg-[#42A362] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#E3AB5D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           تسجيل دخول
