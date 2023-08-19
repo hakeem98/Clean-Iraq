@@ -20,89 +20,45 @@ const Nav = () => {
     );
   }, []);
 
+  const links = [
+    { href: "/", text: "الرئيسية" },
+    { href: "/events", text: "الحملات" },
+    { href: "/blogs", text: "مجتمعنا" },
+    { href: "/contact", text: "تواصل معنا" },
+    { href: "/about", text: "من نحن؟" },
+    { href: "/events/new", text: "حملة جديدة (للأدمن فقط)" },
+  ];
   const navList = (
     <ul
       className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
       dir="rtl"
     >
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="/" className="flex items-center font-bold">
-          الرئيسية
-        </Link>
-      </Typography>
-
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="/events" className="flex items-center font-bold">
-          الحملات
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="/blogs" className="flex items-center font-bold">
-          {" "}
-          مجتمعنا
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="/contact" className="flex items-center font-bold">
-          {" "}
-          تواصل معنا
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="/about" className="flex items-center font-bold">
-          {" "}
-          من نحن؟
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="/events/new" className="flex items-center font-bold">
-          {" "}
-          حملة جديدة (للأدمن فقط)
-        </Link>
-      </Typography>
+      {links.map((link, index) => (
+        <Typography
+          key={index}
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-bold"
+        >
+          <Link href={link.href} className="flex items-center font-bold">
+            <span>{link.text}</span>
+          </Link>
+        </Typography>
+      ))}
     </ul>
   );
 
   return (
-    <nav className="fixed w-full pt-2 z-[100]">
+    <nav className="fixed w-full pt-1 z-[100]">
       <div className="w-full shadow-md container mx-auto">
-        <Navbar className="bg-green-400 backdrop-blur-xl sticky top-0 z-10 border-none h-max max-w-full rounded-md py-2 px-0 lg:px-8 lg:py-4">
+        <Navbar className="bg-green-400 backdrop-blur-3xl sticky top-0 z-10 border-none h-max max-w-full rounded-md py-1 px-0 lg:px-8 lg:py-3">
           <div className="flex items-center justify-between px-[2rem] sm:px-[4rem] text-blue-gray-900 overflow-hidden">
           <Theme/>
             <Typography
               as="a"
               href="/"
-              className="w-[60px] h-[60px] cursor-pointer font-medium"
+              className="w-[60px] h-[60px] cursor-pointer font-extrabold"
             >
               <img
                 src="/assets/logo.png"

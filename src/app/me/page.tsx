@@ -46,7 +46,7 @@ const data = [
 ];
 export default function () {
   return (
-    <div className="grid grid-cols-5 grid-rows-1 gap-4  container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto my-10">
+    <div className="grid grid-cols-5 grid-rows-1 gap-4  container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto  py-20">
       <div className=" max-w-[400px] col-span-2 flex justify-center items-center">
         <div className="dark:!bg-navy-800 shadow-shadow-500 shadow-3xl rounded-primary relative mx-auto flex h-full w-full flex-col items-center bg-white bg-cover bg-clip-border p-[16px] dark:text-white dark:shadow-none shadow-lg gap-2 w-5">
           <div
