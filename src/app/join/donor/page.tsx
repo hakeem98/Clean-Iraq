@@ -84,7 +84,7 @@ export default function page({}: Props) {
   return (
     <div
       dir={i18n.language === "en" ? "ltr" : "rtl"}
-      className="pt-[8rem] pb-[8rem] bg-[#F6FFFA]"
+      className="pt-[8rem] pb-[8rem] bg-[#F6FFFA] dark:bg-black"
     >
       <div
         className={`container  max-w-[640px] px-[1.5rem] sm:mx-auto ${tajawal.className}`}
@@ -201,7 +201,7 @@ export default function page({}: Props) {
                 {t("join")}
               </button>
             </div>
-            <p className="note text-[#595959] mt-2 ">
+            <p className="note text-[#595959] mt-2  dark:text-white">
               {t("after click donat button")}
             </p>
           </form>

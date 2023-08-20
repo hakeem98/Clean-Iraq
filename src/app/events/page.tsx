@@ -79,7 +79,7 @@ export default function events() {
     <div className="pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto">
       {/* map and location */}
       <div className="" dir={i18n.language === "en" ? "ltr" : "rtl"}>
-        <Typography variant="h2" color="black" className="mb-2">
+        <Typography variant="h2" color="black" className="mb-2 dark:text-white">
           {t("upcoming events")}
         </Typography>
 
@@ -247,7 +247,7 @@ export default function events() {
       </div>
 
       <div className="mt-[4rem]" dir="rtl">
-        <Typography variant="h2" color="black" className="mb-2">
+        <Typography variant="h2" color="black" className="mb-2 dark:text-white">
           {t("past events")}
         </Typography>
 

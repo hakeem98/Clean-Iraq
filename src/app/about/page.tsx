@@ -77,7 +77,7 @@ export default function about({}: Props) {
             {t("about-hero")}
           </Typography>
 
-          <Typography className="text-md md:text-xl text-white">
+          <Typography className="text-md md:text-xl text-white  ">
             {t("about-hero2")}
           </Typography>
         </div>
@@ -104,7 +104,7 @@ export default function about({}: Props) {
             }`}
             dir={i18n.language === "en" ? "ltr" : "rtl"}
           >
-            <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2">
+            <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2  dark:text-white">
               {t("about-post content")}
 
             </h2>
@@ -125,7 +125,7 @@ export default function about({}: Props) {
               className="aboutContent flex justify-center items-start flex-col pl-0 sm:pl-4"
               dir={i18n.language === "en" ? "ltr" : "rtl"}
             >
-              <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center">
+              <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2 text-center  dark:text-white">
                 {t("about-message")}
               </h2>
 
@@ -143,7 +143,7 @@ export default function about({}: Props) {
         </div>
       </div>
 
-      <div className="organizers container mx-auto mb-[8rem]">
+      <div className="organizers container mx-auto mb-[8rem]  dark:text-white">
         <Typography
           variant="h2"
           color="dark"
@@ -151,11 +151,11 @@ export default function about({}: Props) {
         >
           {t("organizers")}
         </Typography>
-        <div className="list grid grid-cols-1 md:grid-cols-2 gap-x-10">
+        <div className="list grid grid-cols-1 md:grid-cols-2 gap-x-10  ">
           {orgzData.map((item) => (
             <div
               key={item.id}
-              className="w-full rounded-md overflow-hidden shadow-md bg-white my-8"
+              className="w-full rounded-md overflow-hidden shadow-md bg-white my-8 dark:bg-black"
               dir={i18n.language === "en" ? "ltr" : "rtl"}
             >
               <div className="imgContainer h-[23rem] w-full">

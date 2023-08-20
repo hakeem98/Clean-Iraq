@@ -32,7 +32,7 @@ export default function HomePostCard({ dir }: Props) {
           }`}
           dir={i18n.language === "en" ? "ltr" : "rtl"}
         >
-          <Typography variant="h2" color="black" className="mb-2 text-center">
+          <Typography variant="h2" color="black" className="mb-2 text-center  dark:text-white">
             {t("home page post title")}
           </Typography>
           <p>{t("lorem")}</p>
