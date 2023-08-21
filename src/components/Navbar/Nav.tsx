@@ -41,7 +41,7 @@ const Nav = () => {
           className="p-1 font-bold"
         >
           <Link href={link.href} className="flex items-center font-bold">
-            <span>{link.text}</span>
+            <Typography variant="h6">{link.text}</Typography>
           </Link>
         </Typography>
       ))}
@@ -103,7 +103,7 @@ const Nav = () => {
                     className="h-6 w-6"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={3}
                   >
                     <path
                       strokeLinecap="round"
