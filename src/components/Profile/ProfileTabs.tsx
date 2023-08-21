@@ -32,12 +32,12 @@ export const ProfileTabs = ({ posts, events }) => {
             ) : (
               <>
                 <BlogPost post={posts[0]} />
-                {/* <BlogPost post={posts[0]} />
                 <BlogPost post={posts[0]} />
                 <BlogPost post={posts[0]} />
                 <BlogPost post={posts[0]} />
                 <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} /> */}
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
               </>
             )}
           </TabPanel>
