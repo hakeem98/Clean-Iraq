@@ -64,7 +64,7 @@ export default function ImageGallery({}: Props) {
         <div className="galleryList px-[2rem] md:px-[0rem]">
           <div className="container mx-auto grid gap-6 grid-cols-2 md:grid-cols-3">
             {galleryImgs.map((img) => (
-              <Image img={{ id: img.id, imgLink: img.imgLink }} />
+              <Image key={img.id} img={{ id: img.id, imgLink: img.imgLink }} />
             ))}
           </div>
         </div>

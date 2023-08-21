@@ -7,7 +7,6 @@ type Props = {
   };
 };
 
-// Gallery Image
 export default function Image({ img }: Props) {
   return (
     <div

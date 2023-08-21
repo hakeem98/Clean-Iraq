@@ -44,7 +44,7 @@ const posts = [
   },
 ];
 
-export default function Blog() {
+export default function Blogs() {
   const router = useRouter();
   const [selectedPost, setSelectedPost] = useState(null);
   const { t, i18n } = useTranslation();
@@ -69,6 +69,7 @@ export default function Blog() {
       <div className="flex max-w-full flex-wrap justify-center bg-gray-50 rounded-md ">
         {posts.map((post) => (
           <BlogPost
+            key={post?.slug}
             post={post}
             handleOpen={openModal}
             closeModal={closeModal}

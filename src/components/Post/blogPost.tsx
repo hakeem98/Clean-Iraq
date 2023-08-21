@@ -10,7 +10,6 @@ import {
   Textarea,
   Input,
 } from "@material-tailwind/react";
-import "boxicons";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 

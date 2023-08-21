@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
-export default function join() {
+export default function Join() {
   const { t, i18n } = useTranslation();
 
   return (

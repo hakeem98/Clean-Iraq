@@ -25,7 +25,7 @@ import * as yup from "yup";
 import AnimateOnView from "@/components/AnimateOnView";
 import { useTranslation } from "react-i18next";
 
-export default function events() {
+export default function Events() {
   const { t, i18n } = useTranslation();
   const [markers, setMarkers] = useState([
     {

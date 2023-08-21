@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
 
-export default function page({}: Props) {
+export default function Page({}: Props) {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
   const { t, i18n } = useTranslation();

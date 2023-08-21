@@ -1,18 +1,8 @@
 "use client";
 
-import {
-  Button,
-  Tab,
-  TabPanel,
-  Tabs,
-  TabsBody,
-  TabsHeader,
-  Textarea,
-  Typography,
-} from "@material-tailwind/react";
+import { Button, Textarea, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
-import BlogPost from "../blogs/[...slug]/page";
 import { ProfileTabs } from "@/components/Profile/ProfileTabs";
 import { useTranslation } from "react-i18next";
 const posts = [
@@ -53,9 +43,7 @@ const posts = [
     slug: 3,
   },
 ];
-export default function () {
-  const [postsProfile, setPostsProfile] = useState([]);
-  const [eventsProfile, setEventsProfile] = useState([]);
+export default function Me() {
   const { t, i18n } = useTranslation();
 
   return (
@@ -99,7 +87,7 @@ export default function () {
       </div>
       <div className="col-span-12 md:col-span-7 row-span-1 md:row-auto">
         {" "}
-        <ProfileTabs posts={posts} events={eventsProfile} />
+        <ProfileTabs posts={posts} events={[]} />
       </div>
     </div>
   );

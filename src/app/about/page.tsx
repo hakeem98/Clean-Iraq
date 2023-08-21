@@ -43,7 +43,7 @@ const instagramIcon = (
   </svg>
 );
 
-export default function about({}: Props) {
+export default function About({}: Props) {
   const { t, i18n } = useTranslation();
   const orgzData: Image[] = [
     {
@@ -106,7 +106,6 @@ export default function about({}: Props) {
           >
             <h2 className="text-4xl font-semibold leading-[1.3] text-black mb-2  dark:text-white">
               {t("about-post content")}
-
             </h2>
             <p>{t("about-p")}</p>
             <ul className="list-disc space-y-2 pl-6">

@@ -13,7 +13,7 @@ interface FormType {
   password2: string;
   phone: string;
 }
-export default function signup() {
+export default function Signup() {
   const schema = yup
     .object({
       firstName: yup.string().required("هذا الحقل مطلوب"),

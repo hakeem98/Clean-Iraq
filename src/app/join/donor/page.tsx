@@ -12,7 +12,7 @@ type Props = {};
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
-export default function page({}: Props) {
+export default function Page({}: Props) {
   const { t, i18n } = useTranslation();
 
   const [options, setOptions] = useState([
@@ -96,7 +96,10 @@ export default function page({}: Props) {
         </div>
 
         <div className=" dark:bg-black">
-          <form className="w-full dark:bg-black" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="w-full dark:bg-black"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <FormField
               name="options"
               label={t("What would you like to donate")}
