@@ -60,13 +60,13 @@ export default function Blogs() {
   };
   return (
     <div
-      className=" container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto flex-column justify-center items-center  py-20"
+      className=" container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto flex-column justify-center items-center dark:bg-black"
       dir={i18n.language === "en" ? "ltr" : "rtl"}
     >
-      <div className=" my-5">
+      <div className=" my-5 dark:bg-blue-gray-900">
         <AddPost />
       </div>
-      <div className="flex max-w-full flex-wrap justify-center bg-gray-50 rounded-md ">
+      <div className="flex max-w-full flex-wrap justify-center bg-gray-50 rounded-md dark:bg-blue-gray-900 ">
         {posts.map((post) => (
           <BlogPost
             key={post?.slug}

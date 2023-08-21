@@ -17,17 +17,17 @@ export default function BlogPost({ post, handleOpen }: any) {
   const router = useRouter();
   return (
     <div className="mx-1">
-      <Card className="max-w-[600px] max-h-[600px] overflow-hidden m-3 px-6 shadow-lg bg-gray-50 my-7 border-r-4 border-b-4 transition ease-out delay-100 hover:border-green-300">
+      <Card className="max-w-[600px] max-h-[600px] overflow-hidden m-3 px-6 shadow-lg bg-gray-50 my-7 border-r-4 border-b-4 transition ease-out delay-100 hover:border-green-300 dark:bg-blue-gray-900 dark:text-white">
         <CardHeader
           color="transparent"
           floated={false}
           shadow={false}
-          className="flex items-center justify-between pt-0 pb-4 mx-0 p-10"
+          className="flex items-center justify-between pt-0 pb-4 mx-0 p-10 "
         >
           <ProfileHeader />
         </CardHeader>
         <CardBody
-          className="py-1 bg-gray-100 rounded-lg p-3 mx-4"
+          className="py-1 bg-gray-100 rounded-lg p-3 mx-4 dark:bg-blue-gray-900 dark:text-white"
           onClick={() => handleOpen(post)}
           style={{
             cursor: "pointer",

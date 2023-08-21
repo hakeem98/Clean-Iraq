@@ -22,12 +22,12 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
         size="xl"
         open={selectedPost !== null}
         handler={closeModal}
-        className="overflow-y-auto max-h-[90vh] p-10"
+        className="overflow-y-auto max-h-[90vh] p-10 dark:bg-blue-gray-900 dark:text-white"
       >
-        <DialogBody className="p-0">
+        <DialogBody className="p-0 dark:bg-blue-gray-900  dark:text-white">
           <div className="col-start-1 row-start-1 mx-2 flex">
             <CardBody
-              className="py-1 bg-gray-100 rounded-lg p-3 mx-4 w-[80vh] max-h-[75vh]"
+              className="py-1 bg-gray-100 rounded-lg p-3 mx-4 w-[80vh] max-h-[75vh] dark:bg-blue-gray-900  dark:text-white "
               style={{
                 marginLeft: "0px",
                 marginRight: "0px",
@@ -39,12 +39,14 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
                 className="rounded-xl  max-h-[35vh]"
                 style={{ border: "4px solid #9DDBAD" }}
                 navigation={({ setActiveIndex, activeIndex, length }) => (
-                  <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                  <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2 ">
                     {new Array(length).fill("").map((_, i) => (
                       <span
                         key={i}
                         className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                          activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                          activeIndex === i
+                            ? "w-8 bg-white"
+                            : "w-4 bg-white/50 "
                         }`}
                         onClick={() => setActiveIndex(i)}
                       />
@@ -79,19 +81,17 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
                 ونشكر ثقتكم ودعمكم النا متحمسين نشوفكم اليوم,
               </Typography>
             </CardBody>
-            <div className="flex-col justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2 overflow-y-auto h-[75vh] w-[70vh] gap-16">
-              <div>
-                <Typography variant="h4" className="p-6">
-                  التعليقات
-                </Typography>
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
-              </div>
+            <div className="flex-col justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2 overflow-y-auto h-[75vh] w-[70vh] gap-16 dark:bg-blue-gray-900  dark:text-white">
+              <Typography variant="h4" className="p-6">
+                التعليقات
+              </Typography>
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
             </div>
           </div>
         </DialogBody>

@@ -20,7 +20,7 @@ export const CommentCard = ({}: any) => {
         dir={i18n.language === "en" ? "ltr" : "rtl"}
         color="transparent"
         shadow={false}
-        className="w-full max-w-full p-2 max-h-[200px] border-4 transition ease-out delay-100 hover:border-green-300"
+        className="w-full max-w-full p-2 max-h-[200px] border-4 transition ease-out delay-100 hover:border-green-300  dark:text-white"
       >
         <CardHeader
           color="transparent"

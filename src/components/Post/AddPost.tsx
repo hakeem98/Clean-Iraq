@@ -23,7 +23,7 @@ export const AddPost: any = () => {
   };
   return (
     <>
-      <div className="flex w-[40%] flex-row items-center gap-2 rounded-lg bg-gray-900/5 p-5 shadow-md my-4">
+      <div className="flex w-[40%] flex-row items-center gap-2 rounded-lg bg-gray-900/5 p-5 shadow-md my-4 dark:text-white">
         <div className="flex">
           <IconButton
             variant="text"
@@ -71,7 +71,7 @@ export const AddPost: any = () => {
         <DialogHeader className="flex-col items-start">
           <ProfileHeader />
         </DialogHeader>
-        <DialogBody className="bg-gray-100 rounded-lg shadow-sm mx-4 flex-col">
+        <DialogBody className="bg-gray-100 rounded-lg shadow-sm mx-4 flex-col dark:bg-blue-gray-900 ">
           <Textarea
             variant="static"
             placeholder={t("add_post_desc")}
