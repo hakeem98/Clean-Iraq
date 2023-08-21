@@ -19,6 +19,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import AnimateOnView from "../components/AnimateOnView";
 import Organizers from "../components/Organizers";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
@@ -42,6 +43,8 @@ export default function Home() {
     },
   ]);
 
+  const { t, i18n } = useTranslation();
+
   const handleMapClick = () => {
     console.log("clicked");
   };
@@ -53,8 +56,8 @@ export default function Home() {
     .object({
       email: yup
         .string()
-        .email("الرجاء ادخال بريد الكتروني صحيح 'example@email.com'")
-        .required("للاشتراك, الرجاء ادخال البريد الالكتروني"),
+        .email(t("error- please enter a correct email address"))
+        .required(t("error- please enter a correct email address")),
     })
     .required();
 
@@ -76,7 +79,10 @@ export default function Home() {
       <div className="container mx-auto px-4">
         {/* About us */}
         <AnimateOnView>
-          <div className="aboutUs flex flex-col md:flex-row px-[1rem] mt-[2rem]">
+          <div
+            className="aboutUs flex flex-col md:flex-row px-[1rem] mt-[2rem]"
+            dir={i18n.language === "en" ? "rtl" : "ltr"}
+          >
             <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">
               <div className="w-full h-full px-[4rem] py-[2rem] ">
                 <div className="bg-[url('/assets/1.png')] w-full shadow-[10px_10px_0px_0px_#9DDBAD] transition hover:shadow-[0px_0px_0px_0px_#9DDBAD] rounded-md h-full bg-cover bg-center"></div>
@@ -84,23 +90,18 @@ export default function Home() {
             </div>
 
             <div
+              dir={i18n.language === "en" ? "ltr" : "rtl"}
               className="aboutUsContent flex justify-center items-start flex-col pl-0 sm:pl-4"
-              dir="rtl"
             >
               <Typography
                 variant="h2"
                 color="black"
                 className={`mb-2 text-center ${tajawal.className}`}
               >
-                من نحن؟
+                {t("about us-nav")}
               </Typography>
-              <p>
-                وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت
-                دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
-                . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو
-                لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-              </p>
-              <LinkButton link="/about">قراءة المزيد</LinkButton>
+              <p>{t("lorem")}</p>
+              <LinkButton link="/about">{t("read more")}</LinkButton>
             </div>
           </div>
         </AnimateOnView>
@@ -113,13 +114,13 @@ export default function Home() {
         {/* Events */}
         <div className="events pt-[8rem] pb-[6rem] container px-[2rem] sm:px-[1rem] md:px-[1.5rem] sm:mx-auto">
           {/* map and location */}
-          <div className="" dir="rtl">
+          <div className="" dir={i18n.language === "en" ? "ltr" : "rtl"}>
             <Typography
               variant="h2"
               color="black"
               className={`mb-2 ${tajawal.className}`}
             >
-              الحملات الجاية
+              {t("upcoming events")}
             </Typography>
             <AnimateOnView>
               <div className="map-location h-[25rem] mb-[2rem] rounded-lg overflow-hidden">
@@ -161,17 +162,21 @@ export default function Home() {
                           <AiOutlineClockCircle className="text-[2rem] text-white" />
                         </div>
 
-                        <Typography variant="h5" className="text-gray-100">
-                          11:00 صباحاً
+                        <Typography
+                          dir="ltr"
+                          variant="h5"
+                          className="text-gray-100"
+                        >
+                          11:00 am
                         </Typography>
                       </div>
                     </div>
                     <Button
                       size="lg"
                       color="amber"
-                      className="w-full font-light"
+                      className="w-full font-light normal-case"
                     >
-                      شارك
+                      {t("join")}
                     </Button>
                   </div>
                 </EventCard>
@@ -193,17 +198,21 @@ export default function Home() {
                         <div className="icon mx-2">
                           <AiOutlineClockCircle className="text-[2rem] text-white" />
                         </div>
-                        <Typography variant="h5" className="text-gray-100">
-                          11:00 صباحاً
+                        <Typography
+                          dir="ltr"
+                          variant="h5"
+                          className="text-gray-100"
+                        >
+                          11:00 am
                         </Typography>
                       </div>
                     </div>
                     <Button
                       size="lg"
                       color="amber"
-                      className="w-full font-light"
+                      className="w-full font-light normal-case"
                     >
-                      شارك
+                      {t("join")}
                     </Button>
                   </div>
                 </EventCard>
@@ -225,24 +234,28 @@ export default function Home() {
                         <div className="icon mx-2">
                           <AiOutlineClockCircle className="text-[2rem] text-white" />
                         </div>
-                        <Typography variant="h5" className="text-gray-100">
-                          11:00 صباحاً
+                        <Typography
+                          dir="ltr"
+                          variant="h5"
+                          className="text-gray-100"
+                        >
+                          11:00 am
                         </Typography>
                       </div>
                     </div>
                     <Button
                       size="lg"
                       color="amber"
-                      className="w-full font-light"
+                      className="w-full font-light normal-case"
                     >
-                      شارك
+                      {t("join")}
                     </Button>
                   </div>
                 </EventCard>
               </Link>
             </div>
             <LinkButton link="/events">
-              <Typography variant="h5">رؤية المزيد</Typography>
+              <Typography variant="h5">{t("see more")}</Typography>
             </LinkButton>
           </AnimateOnView>
         </div>
@@ -255,7 +268,7 @@ export default function Home() {
           color="dark"
           className={`text-center mb-[4rem] ${tajawal.className}`}
         >
-          شاركنا تجربتك
+          {t("experience")}
         </Typography>
         <div className="">
           <HomePostCard dir="ltr" />
@@ -264,7 +277,7 @@ export default function Home() {
 
           <div className="flex justify-center items-center">
             <LinkButton link="/blogs">
-              <Typography variant="h5">رؤية المزيد</Typography>
+              <Typography variant="h5">{t("see more")}</Typography>
             </LinkButton>
           </div>
         </div>
@@ -285,29 +298,28 @@ export default function Home() {
               color="dark"
               className={`text-center ${tajawal.className}`}
             >
-              اشترك
+              {t("subscribe")}
             </Typography>
             <Typography
               variant="p"
               color="dark"
               className={`text-center ${tajawal.className}`}
             >
-              لتبقى على اطلاع وعلم بالحملات والمبادرات القادمة
+              {t("stay informed")}
             </Typography>
-            <form dir="rtl" onSubmit={handleSubmit(onSubmit)}>
-              <FormField
-                name="email"
-                label="البريد الألكتروني"
-                error={errors.email}
-              >
+            <form
+              dir={i18n.language === "en" ? "ltr" : "rtl"}
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <FormField name="email" label={t("email")} error={errors.email}>
                 <Input
                   className="bg-[#F6F6F6] pt-2"
                   variant="standard"
                   color="blue"
-                  label="البريد الألكتروني"
+                  label={t("email")}
                   id="email"
                   {...register("email", {
-                    required: "للاشتراك, الرجاء ادخال البريد الالكتروني",
+                    required: t("error- please enter a correct email address"),
                   })}
                 />
               </FormField>
@@ -317,9 +329,9 @@ export default function Home() {
                   type="submit"
                   size="lg"
                   color="amber"
-                  className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
+                  className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light"
                 >
-                  اشترك
+                  {t("subscribe")}
                 </Button>
               </div>
             </form>

@@ -2,12 +2,14 @@ import React from "react";
 import { Typography } from "../app/material-tailwind";
 import LinkButton from "./LinkButton";
 import AnimateOnView from "./AnimateOnView";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   dir: "rtl" | "ltr";
 };
 
 export default function HomePostCard({ dir }: Props) {
+  const { t, i18n } = useTranslation();
   return (
     <AnimateOnView>
       <div
@@ -28,19 +30,14 @@ export default function HomePostCard({ dir }: Props) {
           className={`postContent flex justify-center items-start flex-col ${
             dir === "rtl" ? "pr-0 lg:pr-[4rem]" : "pl-0 lg:pl-[4rem]"
           }`}
-          dir="rtl"
+          dir={i18n.language === "en" ? "ltr" : "rtl"}
         >
-          <Typography variant="h2" color="black" className="mb-2 text-center">
-            عنوان المنشور
+          <Typography variant="h2" color="black" className="mb-2 text-center  dark:text-white">
+            {t("home page post title")}
           </Typography>
-          <p>
-            وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
-            أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت
-            انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي
-            يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-          </p>
+          <p>{t("lorem")}</p>
 
-          <LinkButton link="#">قراءة المزيد</LinkButton>
+          <LinkButton link="#">{t("read more")}</LinkButton>
         </div>
       </div>
     </AnimateOnView>

@@ -11,8 +11,11 @@ import {
   DialogHeader,
   Typography,
 } from "@material-tailwind/react";
-
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 export default function PostDetails({ closeModal, selectedPost }: any) {
+  const { t, i18n } = useTranslation();
+  const [open, setOpen] = useState(false);
   return (
     <>
       <Dialog

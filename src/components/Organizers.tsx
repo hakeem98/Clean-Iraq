@@ -10,6 +10,7 @@ import {
 import AnimateOnView from "./AnimateOnView";
 import Marquee from "react-fast-marquee";
 import { Tajawal } from "next/font/google";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 type Props = {};
@@ -54,6 +55,7 @@ const instagramIcon = (
 export default function Organizers({}: Props) {
   const [open, setOpen] = React.useState(false);
   const [selectedItem, setSelectedItem] = useState<Image | null>(null);
+  const { t, i18n } = useTranslation();
   const orgzData: Image[] = [
     {
       id: 1,
@@ -90,7 +92,7 @@ export default function Organizers({}: Props) {
             color="dark"
             className={`text-center ${tajawal.className}`}
           >
-            المنظمين
+            {t("organizers")}
           </Typography>
           <Marquee
             pauseOnHover={true}
@@ -134,7 +136,7 @@ export default function Organizers({}: Props) {
         open={open}
         handler={handleOpen}
         className="flex flex-row overflow-hidden relative"
-        dir="rtl"
+        dir={i18n.language === "en" ? "ltr" : "rtl"}
       >
         <DialogBody divider={true} className="p-0">
           <img
@@ -153,14 +155,14 @@ export default function Organizers({}: Props) {
                   color="blue-gray"
                   className={`font-medium ${tajawal.className}`}
                 >
-                  اسم المنظم
+                  {t("organizer name")}
                 </Typography>
                 <Typography
                   variant="h5"
                   color="gray"
                   className={`text-xs font-normal ${tajawal.className}`}
                 >
-                  الوظيفة
+                  {t("organizer position")}
                 </Typography>
               </div>
             </div>
@@ -169,15 +171,16 @@ export default function Organizers({}: Props) {
                 variant="small"
                 className={`font-light my-8 pt-8 ${tajawal.className}`}
               >
-                وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت
-                دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
-                . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو
-                لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات
+                {t("lorem")}
               </Typography>
             </div>
           </DialogHeader>
 
-          <DialogFooter className="justify-between absolute bottom-0 left-0">
+          <DialogFooter
+            className={`justify-between absolute bottom-0 ${
+              i18n.language === "en" ? "right-0" : "left-0"
+            }`}
+          >
             <div className="flex items-center gap-16 mx-4">
               <div>
                 <Typography

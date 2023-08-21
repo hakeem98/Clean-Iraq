@@ -8,9 +8,13 @@ import {
   Button,
   IconButton,
 } from "../../app/material-tailwind";
+import LanguageSwitcher from "../LanuageSwitcher";
+import Theme from "../theme/theme";
+import { useTranslation } from "react-i18next";
 
 const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     window.addEventListener(
@@ -19,32 +23,73 @@ const Nav = () => {
     );
   }, []);
 
-  const links = [
-    { href: "/", text: "الرئيسية" },
-    { href: "/events", text: "الحملات" },
-    { href: "/blogs", text: "مجتمعنا" },
-    { href: "/contact", text: "تواصل معنا" },
-    { href: "/about", text: "من نحن؟" },
-    { href: "/events/new", text: "حملة جديدة (للأدمن فقط)" },
-  ];
   const navList = (
-    <ul
-      className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"
-      dir="rtl"
-    >
-      {links.map((link, index) => (
-        <Typography
-          key={index}
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="p-1 font-bold"
-        >
-          <Link href={link.href} className="flex items-center font-bold">
-            <Typography variant="h6">{link.text}</Typography>
-          </Link>
-        </Typography>
-      ))}
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link href="/" className="flex items-center font-bold">
+          {t("home-nav")}
+        </Link>
+      </Typography>
+
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link href="/events" className="flex items-center font-bold">
+          {t("events-nav")}
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link href="/blogs" className="flex items-center font-bold">
+          {" "}
+          {t("our community-nav")}
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link href="/contact" className="flex items-center font-bold">
+          {" "}
+          {t("contact us-nav")}
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link href="/about" className="flex items-center font-bold">
+          {" "}
+          {t("about us-nav")}
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <Link href="/events/new" className="flex items-center font-bold">
+          {" "}
+          {t("add event")}
+        </Link>
+      </Typography>
     </ul>
   );
 
@@ -53,6 +98,7 @@ const Nav = () => {
       <div className="w-full shadow-md container mx-auto">
         <Navbar className="bg-green-400 backdrop-blur-3xl sticky top-0 z-10 border-none h-max max-w-full rounded-md py-1 px-0 lg:px-8 lg:py-3">
           <div className="flex items-center justify-between px-[2rem] sm:px-[4rem] text-blue-gray-900 overflow-hidden">
+            <Theme />
             <Typography
               as="a"
               href="/"
@@ -64,18 +110,22 @@ const Nav = () => {
                 alt="سفراء النظافة"
               />
             </Typography>
+
             <div className="flex items-center gap-4">
-              <div className="mr-4 hidden xl:block">{navList}</div>
-              <Link href={"/join"}>
+              <div className="mr-4 hidden xl:block" dir="rtl">
+                {navList}
+              </div>
+              <Link href={"/join"} className="hidden xl:block">
                 <Button
                   size="lg"
                   color="amber"
-                  className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] font-light hidden lg:inline-block"
+                  className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] font-light hidden lg:inline-block"
                   onClick={() => setOpenNav(false)}
                 >
-                  انضمام
+                  {t("join")}
                 </Button>
               </Link>
+              <LanguageSwitcher />
               <IconButton
                 variant="text"
                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent xl:hidden"
@@ -116,15 +166,15 @@ const Nav = () => {
             </div>
           </div>
           <MobileNav open={openNav} className="m-0 p-0 px-4">
-            {navList}
+            <div dir={i18n.language === "en" ? "ltr" : "rtl"}>{navList}</div>
             <Link href={"/join"}>
               <Button
                 size="lg"
                 color="amber"
-                className="rounded-[6px] bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light w-full"
+                className="rounded-[6px] normal-case bg-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light w-full"
                 onClick={() => setOpenNav(false)}
               >
-                انضمام
+                {t("join")}
               </Button>
             </Link>
           </MobileNav>

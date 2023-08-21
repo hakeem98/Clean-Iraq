@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "../../app/material-tailwind";
 import { Tajawal } from "next/font/google";
+import { useTranslation } from "react-i18next";
 
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "700"] });
 
@@ -38,46 +39,48 @@ const instagramIcon = (
   </svg>
 );
 
-const LINKS = [
-  {
-    title: "انتقل الى:",
-    items: [
-      { icon: "", label: "الصفحة الرئيسية", link: "/" },
-      { icon: "", label: "الحملات", link: "/events" },
-      { icon: "", label: "مجتمعنا", link: "/blogs" },
-      { icon: "", label: "من نحن؟", link: "/about" },
-    ],
-  },
-  {
-    title: "تابعنا على:",
-    items: [
-      {
-        icon: facebookIcon,
-        label: "clean iraq",
-        link: "https://www.facebook.com/clean.iraq",
-      },
-      {
-        icon: instagramIcon,
-        label: "@clean.iraq",
-        link: "https://www.instagram.com/clean.iraq/",
-      },
-    ],
-  },
-  {
-    title: "تواصل معنا:",
-    items: [{ icon: "", label: "example@email.com", link: "/" }],
-  },
-];
-
 const currentYear = new Date().getFullYear();
 
 export default function Footer({}: Props) {
+  const { t, i18n } = useTranslation();
+
+  const LINKS = [
+    {
+      title: t("go to"),
+      items: [
+        { icon: "", label: t("home-nav"), link: "/" },
+        { icon: "", label: t("events-nav"), link: "/events" },
+        { icon: "", label: t("our community-nav"), link: "/blogs" },
+        { icon: "", label: t("about us-nav"), link: "/about" },
+      ],
+    },
+    {
+      title: t("follow us"),
+      items: [
+        {
+          icon: facebookIcon,
+          label: "clean iraq",
+          link: "https://www.facebook.com/clean.iraq",
+        },
+        {
+          icon: instagramIcon,
+          label: "@clean.iraq",
+          link: "https://www.instagram.com/clean.iraq/",
+        },
+      ],
+    },
+    {
+      title: t("contact us-nav"),
+      items: [{ icon: "", label: "example@email.com", link: "/" }],
+    },
+  ];
+
   return (
     <footer className=" w-full bg-[#0D1E0B] pt-[2rem] absolute ">
       <div className=" w-full px-8">
         <div
           className="container mx-auto grid grid-cols-1 justify-between gap-4 md:grid-cols-2"
-          dir="rtl"
+          dir={i18n.language === "en" ? "ltr" : "rtl"}
         >
           <Typography
             as="a"
@@ -90,7 +93,10 @@ export default function Footer({}: Props) {
               alt="سفراء النظافة"
             />
           </Typography>
-          <div className="grid grid-cols-3 justify-between gap-4" dir="rtl">
+          <div
+            className="grid grid-cols-3 justify-between gap-4"
+            dir={i18n.language === "en" ? "ltr" : "rtl"}
+          >
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <Typography
