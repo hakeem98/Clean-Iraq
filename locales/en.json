@@ -9,7 +9,10 @@
   "about us-nav": "About us",
   "join": "Join",
   "login": "login",
-
+  "publish": "Publish",
+  "cancel": "Cancel",
+  "edit_info": "Edit info",
+  "add_post_desc": "Post description ....",
   "organizers": "Organizers",
   "organizer name": "Organizer Name",
   "organizer position": "Organizer Position",

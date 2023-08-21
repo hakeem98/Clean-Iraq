@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import BlogPost from "../blogs/[...slug]/page";
 import { ProfileTabs } from "@/components/Profile/ProfileTabs";
+import { useTranslation } from "react-i18next";
 const posts = [
   {
     description: `"حملتنا اليوم راح تكون مختلفة، لذلك نرجو منكم الالتزام بالخطوات حتى
@@ -55,6 +56,7 @@ const posts = [
 export default function () {
   const [postsProfile, setPostsProfile] = useState([]);
   const [eventsProfile, setEventsProfile] = useState([]);
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto grid grid-cols-12 grid-rows-1  gap-8 pt-[15vh] pb ">
@@ -90,7 +92,7 @@ export default function () {
               />
             </div>
             <Button fullWidth color="gray">
-              تعديل المعلومات الشخصية
+              {t("edit_info")}
             </Button>
           </div>
         </div>

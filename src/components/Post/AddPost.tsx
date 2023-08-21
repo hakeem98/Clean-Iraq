@@ -10,10 +10,13 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { ProfileHeader } from "../Profile/ProfileHeader";
+import { useTranslation } from "react-i18next";
 
 export const AddPost: any = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
+  const { t, i18n } = useTranslation();
+
   const handleSubmit = () => {
     console.log("post created");
     handleOpen();
@@ -45,7 +48,7 @@ export const AddPost: any = () => {
         </div>
         <Textarea
           rows={1}
-          placeholder="ما الذي تود مشاركته..."
+          placeholder={t("add_post_desc")}
           className="min-h-full !border-0 focus:border-transparent"
           containerProps={{
             className: "grid h-full",
@@ -71,7 +74,7 @@ export const AddPost: any = () => {
         <DialogBody className="bg-gray-100 rounded-lg shadow-sm mx-4 flex-col">
           <Textarea
             variant="static"
-            placeholder="ما الذي ترغب في الحديث بشأنه ؟ "
+            placeholder={t("add_post_desc")}
             rows={3}
           />
           <IconButton variant="text" className="rounded-full">
@@ -98,7 +101,7 @@ export const AddPost: any = () => {
             className="rounded-[6px] px-8 py-[.5rem] mt-[1.5rem] font-light"
             onClick={handleSubmit}
           >
-            نشر
+            {t("publish")}
           </Button>
           <Button
             size="lg"
@@ -106,7 +109,7 @@ export const AddPost: any = () => {
             className="rounded-[6px] bg-[#fffff] px-8 py-[.5rem] mt-[1.5rem] font-light"
             onClick={handleOpen}
           >
-            الغاء
+            {t("cancel")}
           </Button>
         </DialogFooter>
       </Dialog>

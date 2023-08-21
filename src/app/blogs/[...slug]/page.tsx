@@ -21,6 +21,7 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
   return (
     <>
       <Dialog
+        dir={i18n.language === "en" ? "ltr" : "rtl"}
         size="xl"
         open={selectedPost !== null}
         handler={closeModal}
@@ -86,10 +87,7 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
                 اليوم🙏"`,
               </Typography>
             </CardBody>
-            <div
-              className="flex-col justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2 overflow-y-auto h-[75vh] w-[70vh] gap-16"
-              // style={{ overflow: "scroll", height: "" }}
-            >
+            <div className="flex-col justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2 overflow-y-auto h-[75vh] w-[70vh] gap-16">
               <Typography variant="h4" className="p-6">
                 التعليقات
               </Typography>

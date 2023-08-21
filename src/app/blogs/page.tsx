@@ -4,6 +4,7 @@ import { AddPost } from "@/components/Post/AddPost";
 import { useRouter } from "next/navigation";
 import BlogPost from "@/components/Post/blogPost";
 import PostDetails from "./[...slug]/page";
+import { useTranslation } from "react-i18next";
 const posts = [
   {
     description: `"حملتنا اليوم راح تكون مختلفة، لذلك نرجو منكم الالتزام بالخطوات حتى
@@ -46,6 +47,8 @@ const posts = [
 export default function Blog() {
   const router = useRouter();
   const [selectedPost, setSelectedPost] = useState(null);
+  const { t, i18n } = useTranslation();
+
   const openModal = (post: any) => {
     setSelectedPost(post);
     router.push(`/blogs/${post.slug}`);
@@ -58,7 +61,7 @@ export default function Blog() {
   return (
     <div
       className=" container sm:px-[1rem] md:px-[1.5rem] sm:mx-auto flex-column justify-center items-center  py-20"
-      dir="rtl"
+      dir={i18n.language === "en" ? "ltr" : "rtl"}
     >
       <div className=" my-5">
         <AddPost />

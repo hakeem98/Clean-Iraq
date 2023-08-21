@@ -9,11 +9,15 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const CommentCard = ({}: any) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Card
+        dir={i18n.language === "en" ? "ltr" : "rtl"}
         color="transparent"
         shadow={false}
         className="w-full max-w-full p-2 max-h-[200px] border-4 transition ease-out delay-100 hover:border-green-300"

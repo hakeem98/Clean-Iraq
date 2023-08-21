@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 export const ProfileHeader = () => {
   const { t, i18n } = useTranslation();
   return (
-
     <div
       dir={i18n.language === "en" ? "ltr" : "rtl"}
       className="flex bg-gray-100 p-3 py-8 rounded-lg w-full shadow-sm m-0 gap-3 dark:bg-gray-900 dark:text-white"
@@ -17,11 +16,17 @@ export const ProfileHeader = () => {
       />
       <div className="flex w-full flex-col gap-0.5 ">
         <div className="flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray" className=" dark:text-white" >
-            {t("username")}{" "}
+          <Typography
+            variant="h5"
+            color="blue-gray"
+            className=" dark:text-white"
+          >
+            أمير نشوان
           </Typography>
         </div>
-        <Typography color="blue-gray" className=" dark:text-white" >{t("today")}</Typography>
+        <Typography color="blue-gray" className=" dark:text-white">
+          {t("today")}
+        </Typography>
       </div>
     </div>
   );
