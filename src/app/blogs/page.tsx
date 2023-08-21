@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AddPost } from "@/components/Post/AddPost";
 import { useRouter } from "next/navigation";
 import BlogPost from "@/components/Post/blogPost";
-import PostDetails from "./[id]/page";
+import PostDetails from "./[...slug]/page";
 const posts = [
   {
     description: `"حملتنا اليوم راح تكون مختلفة، لذلك نرجو منكم الالتزام بالخطوات حتى

@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
-import BlogPost from "../blogs/[id]/page";
+import BlogPost from "../blogs/[...slug]/page";
 import { ProfileTabs } from "@/components/Profile/ProfileTabs";
 const posts = [
   {
