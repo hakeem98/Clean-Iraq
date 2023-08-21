@@ -27,6 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+
     <html lang="en">
       <title>Clean Iraq</title>
       <body className={tajawal.className}>

@@ -8,7 +8,7 @@ import {
   Button,
   IconButton,
 } from "../../app/material-tailwind";
-import LanguageSwitcher from "../LanguageSwitcher";
+import LanguageSwitcher from "../LanuageSwitcher";
 import Theme from "../theme/theme";
 import { useTranslation } from "react-i18next";
 
@@ -22,6 +22,7 @@ const Nav = () => {
       () => window.innerWidth >= 1100 && setOpenNav(false)
     );
   }, []);
+
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -93,15 +94,15 @@ const Nav = () => {
   );
 
   return (
-    <nav className="fixed w-full pt-2 z-[100]">
+    <nav className="fixed w-full pt-1 z-[100]">
       <div className="w-full shadow-md container mx-auto">
-        <Navbar className="bg-green-400 backdrop-blur-xl sticky top-0 z-10 border-none h-max max-w-full rounded-md py-2 px-0 lg:px-8 lg:py-4">
+        <Navbar className="bg-green-400 backdrop-blur-3xl sticky top-0 z-10 border-none h-max max-w-full rounded-md py-1 px-0 lg:px-8 lg:py-3">
           <div className="flex items-center justify-between px-[2rem] sm:px-[4rem] text-blue-gray-900 overflow-hidden">
             <Theme />
             <Typography
               as="a"
               href="/"
-              className="w-[60px] h-[60px] cursor-pointer font-medium"
+              className="w-[60px] h-[60px] cursor-pointer font-extrabold"
             >
               <img
                 src="/assets/logo.png"
@@ -152,7 +153,7 @@ const Nav = () => {
                     className="h-6 w-6"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={3}
                   >
                     <path
                       strokeLinecap="round"

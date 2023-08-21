@@ -76,7 +76,7 @@ export default function Footer({}: Props) {
   ];
 
   return (
-    <footer className="relative w-full bg-[#0D1E0B] pt-[2rem]">
+    <footer className=" w-full bg-[#0D1E0B] pt-[2rem] absolute ">
       <div className=" w-full px-8">
         <div
           className="container mx-auto grid grid-cols-1 justify-between gap-4 md:grid-cols-2"

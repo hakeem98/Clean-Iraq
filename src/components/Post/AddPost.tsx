@@ -20,7 +20,7 @@ export const AddPost: any = () => {
   };
   return (
     <>
-      <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-gray-900/5 p-3 shadow-md">
+      <div className="flex w-[40%] flex-row items-center gap-2 rounded-lg bg-gray-900/5 p-5 shadow-md my-4">
         <div className="flex">
           <IconButton
             variant="text"
@@ -58,7 +58,7 @@ export const AddPost: any = () => {
       </div>
       <Dialog
         open={open}
-        size="xl"
+        size="lg"
         handler={handleOpen}
         animate={{
           mount: { scale: 1, y: 0 },
@@ -74,11 +74,7 @@ export const AddPost: any = () => {
             placeholder="ما الذي ترغب في الحديث بشأنه ؟ "
             rows={3}
           />
-          <IconButton
-            variant="text"
-            className="rounded-full"
-            onClick={handleOpen}
-          >
+          <IconButton variant="text" className="rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

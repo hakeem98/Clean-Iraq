@@ -1,113 +1,42 @@
-// pages/blog/[slug].js
 "use client";
+import { Like } from "@/components/Post/LikeBtn";
+import { CommentCard } from "@/components/Post/comments/CommentCard";
 import { ProfileHeader } from "@/components/Profile/ProfileHeader";
 import {
-  Card,
-  CardHeader,
   CardBody,
-  CardFooter,
-  Typography,
-  Avatar,
-  Tooltip,
   Carousel,
-  IconButton,
-  Input,
   Dialog,
-  DialogFooter,
-  Button,
   DialogBody,
+  DialogFooter,
   DialogHeader,
+  Typography,
 } from "@material-tailwind/react";
-import "boxicons";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-
-export default function BlogPost({ post }: any) {
+export default function PostDetails({ closeModal, selectedPost }: any) {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen((cur) => !cur);
   return (
-    <div className="mx-1">
-      <Card
-        className="max-w-[450px] max-h-[650px] overflow-hidden m-3 px-6 shadow-lg bg-gray-50 my-7 dark:bg-black"
-        onClick={handleOpen}
-        style={{
-          cursor: "pointer",
-        }}
+    <>
+      <Dialog
+        size="xl"
+        open={selectedPost !== null}
+        handler={closeModal}
+        className="overflow-y-auto max-h-[90vh] p-10"
       >
-        <CardHeader
-          color="transparent"
-          floated={false}
-          shadow={false}
-          className="flex items-center justify-between pt-0 pb-4 mx-0 dark:bg-black"
-        >
-          <ProfileHeader />
-        </CardHeader>
-        <CardBody className="py-1 bg-gray-100 rounded-lg p-3 mx-4   dark:bg-black dark:text-white">
-          <Carousel
-            className="rounded-xl"
-            style={{ border: "4px solid #9DDBAD" }}
-            navigation={({ setActiveIndex, activeIndex, length }) => (
-              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
-                {new Array(length).fill("").map((_, i) => (
-                  <span
-                    key={i}
-                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                    }`}
-                    onClick={() => setActiveIndex(i)}
-                  />
-                ))}
-              </div>
-            )}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-              alt="image 1"
-              className="h-full w-full object-cover"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-              alt="image 1"
-              className="h-full w-full object-cover"
-            />
-          </Carousel>
-          <br />
-          <Typography dir={i18n.language === "en" ? "ltr" : "rtl"}>
-            {t("lorem")}
-          </Typography>
-        </CardBody>
-        <CardFooter className="flex-column items-center py-4 py-1 bg-gray-100 rounded-lg p-3 mx-0 my-3">
-          <IconButton variant="text" className="text-black">
-            <i className="bx bx-heart bx-sm" />
-          </IconButton>
-          <IconButton variant="text" className="text-black">
-            <i className="bx bx-comment bx-sm" />
-          </IconButton>
-        </CardFooter>
-      </Card>
-      <Dialog size="xl" open={open} handler={handleOpen}>
-        <DialogHeader className="justify-between">
-          <ProfileHeader />
-        </DialogHeader>
-        <DialogBody className="p-0 flex-row grid grid-cols-2 grid-rows-1 gap-0">
-          <div className="col-start-2 row-start-1 flex justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2">
-            {" "}
-            <Typography variant="h1" className="">
-              {t("no comments")}
-            </Typography>
-          </div>
-          <div className="col-start-1 row-start-1 mx-2">
+        <DialogBody className="p-0">
+          <div className="col-start-1 row-start-1 mx-2 flex">
             <CardBody
-              className="py-1 bg-gray-100 rounded-lg p-3 mx-4"
+              className="py-1 bg-gray-100 rounded-lg p-3 mx-4 w-[80vh] max-h-[75vh]"
               style={{
                 marginLeft: "0px",
                 marginRight: "0px",
               }}
             >
+              <ProfileHeader />
+
               <Carousel
-                className="rounded-xl"
+                className="rounded-xl  max-h-[35vh]"
                 style={{ border: "4px solid #9DDBAD" }}
                 navigation={({ setActiveIndex, activeIndex, length }) => (
                   <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
@@ -135,12 +64,47 @@ export default function BlogPost({ post }: any) {
                 />
               </Carousel>
               <br />
-              <Typography>{t("lorem")}</Typography>
+              <Typography className="overflow-y-auto max-h-[30vh] ">
+                `"حملتنا اليوم راح تكون مختلفة، لذلك نرجو منكم الالتزام بالخطوات
+                حتى نحرص على تنظيم رائع 🟢 كلش كلش ضروري تسجلون وتجيبون الباركود
+                مال تسجيل. بدون تسجيل وباركود ما راح نكدر ننطيكم المستلزمات مال
+                حملة. هذا رابط التسجيل:
+                https://academy.bloom.pm/ar/programs/clean.iraq/ 🟢 اذا عدكم
+                مطارة مي، جيبوها وياكم. احنا راح نوفر مطارات بس الاعداد محدودة
+                ونريد نشاركها وية اكبر عدد من الناس. من تخلص المطارات راح تكون
+                خلصت الحملة وبعد ما نكدر نستقبل متطوعين. لذلك اذا جبتو وياكم
+                مطاراتكم، هذا يعني راح نكدر نستقبل متطوعين اكثر 🟢 تطبيق كريم
+                يوفر الكم رحلات مجانية باستخدام كود الخصم CLEANIRAQ. اذا ما
+                تحتاجون الخصم، خلو الاخرين سيتفادون منه. اذا ممكن اكثر من شخص
+                يشترك بالخصم من نفس المنطقة، هذا راح يكون افضل حتى نكدر نفيد
+                اكبر عدد من الناس. نرجو تستخدمون التعليقات بهذا البوست حتى
+                تنسقون مع بعض🙏 🟢هذي الحملة راح تكون اول حدث يتنظم بهذي
+                الطريقة، لذلك نرجو منكم تتعاونون ويانا واعذرونا من اي تقصير.
+                احنا كلنا دا نتعلم سوية ونشكر ثقتكم ودعمكم النا متحمسين نشوفكم
+                اليوم🙏"`,
+              </Typography>
             </CardBody>
+            <div
+              className="flex-col justify-center items-center py-1 bg-gray-100 rounded-lg p-3 mx-2 overflow-y-auto h-[75vh] w-[70vh] gap-16"
+              // style={{ overflow: "scroll", height: "" }}
+            >
+              <Typography variant="h4" className="p-6">
+                التعليقات
+              </Typography>
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+              <CommentCard />
+            </div>
           </div>
         </DialogBody>
-        <DialogFooter className="justify-between">. </DialogFooter>
+        <DialogFooter className="justify-between">
+          <Like />
+        </DialogFooter>
       </Dialog>
-    </div>
+    </>
   );
 }
