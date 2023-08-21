@@ -52,6 +52,11 @@ export default function login() {
         <p className="mt-2 text-lg leading-8 text-gray-600">
           اهلا بعودتك ! لاكبر مجتمع تطوعي في العراق
         </p>
+        <Link href="/login">
+          <p className="mt-2 text-lg leading-8 text-blue-600">
+            ليس لديك حساب ؟
+          </p>
+        </Link>
       </div>
       <form
         action="#"

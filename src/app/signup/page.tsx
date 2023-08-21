@@ -1,6 +1,7 @@
 "use client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { log } from "console";
+import Link from "next/link";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -46,7 +47,7 @@ export default function signup() {
     reset();
   };
   return (
-    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8" dir="rtl">
+    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
         aria-hidden="true"
@@ -67,6 +68,11 @@ export default function signup() {
         <p className="mt-2 text-lg leading-8 text-gray-600">
           انضم لاكبر مجتمع تطوعي في العراق ، وكن سفير النظافة الجديد
         </p>
+        <Link href="/signup">
+          <p className="mt-2 text-lg leading-8 text-blue-600">
+            لديك حساب بالفعل ؟{" "}
+          </p>
+        </Link>
       </div>
       <form
         action="#"

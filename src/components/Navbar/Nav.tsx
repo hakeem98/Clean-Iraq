@@ -7,10 +7,11 @@ import {
   Typography,
   Button,
   IconButton,
+  Avatar,
 } from "../../app/material-tailwind";
-import LanguageSwitcher from "../LanuageSwitcher";
 import Theme from "../theme/theme";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -125,7 +126,15 @@ const Nav = () => {
                   {t("join")}
                 </Button>
               </Link>
+
               <LanguageSwitcher />
+              <Link href={"/me"} className="hidden xl:block">
+                <Avatar
+                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                  alt="avatar"
+                  className="border-4 border-light-green-400 rounded-full"
+                />
+              </Link>
               <IconButton
                 variant="text"
                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent xl:hidden"
@@ -175,6 +184,16 @@ const Nav = () => {
                 onClick={() => setOpenNav(false)}
               >
                 {t("join")}
+              </Button>
+            </Link>
+            <Link href={"/login"}>
+              <Button
+                size="lg"
+                color="amber"
+                className="rounded-[6px] normal-case color-[#E3AB5D] px-8 py-[.5rem] mt-[1.5rem] font-light w-full"
+                onClick={() => setOpenNav(false)}
+              >
+                {t("login")}
               </Button>
             </Link>
           </MobileNav>

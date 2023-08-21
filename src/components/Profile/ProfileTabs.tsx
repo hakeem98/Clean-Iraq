@@ -23,25 +23,6 @@ export const ProfileTabs = ({ posts, events }) => {
         </TabsHeader>
         <TabsBody className=" overflow-y-auto max-h-[120vh]">
           <TabPanel
-            key={"events"}
-            value={"الحملات"}
-            className="flex-col items-center bg-gray-50 rounded-lg"
-          >
-            {events.length < 1 ? (
-              <Typography>لا يوجد منشورات</Typography>
-            ) : (
-              <>
-                <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} />
-                <BlogPost post={posts[0]} />
-              </>
-            )}{" "}
-          </TabPanel>
-          <TabPanel
             key={"posts"}
             value={"المنشورات"}
             className="flex-col items-center bg-gray-50 rounded-lg"
@@ -59,6 +40,25 @@ export const ProfileTabs = ({ posts, events }) => {
                 <BlogPost post={posts[0]} />
               </>
             )}
+          </TabPanel>
+          <TabPanel
+            key={"events"}
+            value={"الحملات"}
+            className="flex-col items-center bg-gray-50 rounded-lg"
+          >
+            {events.length < 1 ? (
+              <Typography>لا يوجد منشورات</Typography>
+            ) : (
+              <>
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
+                <BlogPost post={posts[0]} />
+              </>
+            )}{" "}
           </TabPanel>
         </TabsBody>
       </Tabs>

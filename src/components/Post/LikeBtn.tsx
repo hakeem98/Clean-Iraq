@@ -6,8 +6,8 @@ export const Like = () => {
 
   return (
     <>
-      <IconButton onClick={() => setLike(!like)}>
-        <Typography>اعجاب</Typography>
+      <IconButton variant="text" className=" max-h-[40%]">
+        <i className="fas fa-heart" />
       </IconButton>
     </>
   );

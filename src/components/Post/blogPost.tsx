@@ -7,6 +7,8 @@ import {
   CardFooter,
   Typography,
   Carousel,
+  Textarea,
+  Input,
 } from "@material-tailwind/react";
 import "boxicons";
 import { useRouter } from "next/navigation";
@@ -27,39 +29,17 @@ export default function BlogPost({ post, handleOpen }: any) {
         </CardHeader>
         <CardBody
           className="py-1 bg-gray-100 rounded-lg p-3 mx-4"
-          onClick={() => handleOpen()}
+          onClick={() => handleOpen(post)}
           style={{
             cursor: "pointer",
           }}
         >
-          <Carousel
-            className="rounded-xl"
+          <img
+            src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+            alt="image 1"
+            className="h-full w-full object-cover rounded-xl"
             style={{ border: "4px solid #9DDBAD" }}
-            navigation={({ setActiveIndex, activeIndex, length }) => (
-              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
-                {new Array(length).fill("").map((_, i) => (
-                  <span
-                    key={i}
-                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                    }`}
-                    onClick={() => setActiveIndex(i)}
-                  />
-                ))}
-              </div>
-            )}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-              alt="image 1"
-              className="h-full w-full object-cover"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-              alt="image 1"
-              className="h-full w-full object-cover"
-            />
-          </Carousel>
+          />
           <br />
           <Typography>
             {post?.description.length <= 20
@@ -67,9 +47,14 @@ export default function BlogPost({ post, handleOpen }: any) {
               : post?.description.slice(0, 250) + "عرض المزيد ...."}
           </Typography>
         </CardBody>
-        <CardFooter className="flex-column items-center py-4 py-1 bg-gray-100 rounded-lg p-3 mx-0 my-3">
-          <Like />
-        </CardFooter>
+        {/* <CardFooter className="flex flex-row justify-start items-center bg-gray-100 rounded-lg p-1 mx-0 mb-3 mt-1 gap-8 ">
+          <div className="max-w-[20%]">
+            <Like />
+          </div>
+          <div className="max-w-[80%] ">
+            <Input size="md" label="اكتب تعليقا" />
+          </div>
+        </CardFooter> */}
       </Card>
     </div>
   );

@@ -9,6 +9,8 @@ import {
   DialogBody,
   DialogFooter,
   DialogHeader,
+  Input,
+  Textarea,
   Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
@@ -64,7 +66,7 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
                 />
               </Carousel>
               <br />
-              <Typography className="overflow-y-auto max-h-[30vh] ">
+              <Typography className="overflow-y-auto max-h-[20vh] ">
                 `"حملتنا اليوم راح تكون مختلفة، لذلك نرجو منكم الالتزام بالخطوات
                 حتى نحرص على تنظيم رائع 🟢 كلش كلش ضروري تسجلون وتجيبون الباركود
                 مال تسجيل. بدون تسجيل وباركود ما راح نكدر ننطيكم المستلزمات مال
@@ -101,9 +103,6 @@ export default function PostDetails({ closeModal, selectedPost }: any) {
             </div>
           </div>
         </DialogBody>
-        <DialogFooter className="justify-between">
-          <Like />
-        </DialogFooter>
       </Dialog>
     </>
   );
