@@ -15,7 +15,7 @@ export default function Theme() {
 
   return (
     <button
-      className={`w-fit absolute right-5 top-6 p-2 rounded-md hover:scale-110  duration-200 bg-slate-500:bg-[#212933]`}
+      className={`w-fit absolute right-5 top-5 p-2 rounded-md hover:scale-110  bg-teal-600 text-white duration-200 bg-slate-500:bg-[#212933]`}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "light" ? (

@@ -13,7 +13,7 @@ export default function HomePostCard({ dir }: Props) {
   return (
     <AnimateOnView>
       <div
-        className="post grid grid-cols-1 lg:grid-cols-2 lg:mx-[8rem] md:flex-row px-[1rem] mt-[2rem]"
+        className="post grid grid-cols-1 lg:grid-cols-2 lg:mx-[8rem] md:flex-row px-[1rem] mt-[2rem]  dark:text-white"
         dir={dir}
       >
         <div className="imgContainer h-[25rem] md:h-[30rem] min-w-[400px] w-full">

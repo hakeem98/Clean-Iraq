@@ -113,6 +113,7 @@ export default function page({}: Props) {
                         color="teal"
                         id={option.title}
                         value={option.title}
+                        
                         {...register("options", {
                           required: t("error- select at least one option"),
                         })}
